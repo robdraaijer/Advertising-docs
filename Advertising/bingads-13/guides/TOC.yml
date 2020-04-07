@@ -1400,6 +1400,8 @@
           href: ../campaign-management-service/productscope.md
         - name: ProfileCriterion
           href: ../campaign-management-service/profilecriterion.md
+        - name: PromotionAdExtension
+          href: ../campaign-management-service/promotionadextension.md
         - name: RadiusCriterion
           href: ../campaign-management-service/radiuscriterion.md
         - name: RemarketingList
@@ -1589,6 +1591,10 @@
           href: ../campaign-management-service/productpartitiontype.md
         - name: ProfileType
           href: ../campaign-management-service/profiletype.md
+        - name: PromotionDiscountModifier
+          href: ../campaign-management-service/promotiondiscountmodifier.md
+        - name: PromotionOccasion
+          href: ../campaign-management-service/promotionoccasion.md
         - name: StringOperator
           href: ../campaign-management-service/stringoperator.md
         - name: UetTagTrackingStatus

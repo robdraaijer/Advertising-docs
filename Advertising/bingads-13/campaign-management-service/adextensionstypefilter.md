@@ -25,6 +25,7 @@ Defines the possible ad extension types.
         <xs:enumeration value="StructuredSnippetAdExtension" />
         <xs:enumeration value="PriceAdExtension" />
         <xs:enumeration value="ActionAdExtension" />
+        <xs:enumeration value="PromotionAdExtension" />
       </xs:restriction>
     </xs:simpleType>
   </xs:list>
@@ -42,6 +43,7 @@ Defines the possible ad extension types.
 |<a name="imageadextension"></a>ImageAdExtension|An ad extension that contains an image with alternative text. For more information, see [ImageAdExtension](imageadextension.md).|
 |<a name="locationadextension"></a>LocationAdExtension|An ad extension that contains the address and phone number of the business. For more information, see [LocationAdExtension](locationadextension.md).|
 |<a name="priceadextension"></a>PriceAdExtension|An ad extension that includes between 3 and 8 price table rows. For more information, see [PriceAdExtension](priceadextension.md).|
+|<a name="promotionadextension"></a>PromotionAdExtension|Reserved.|
 |<a name="reviewadextension"></a>ReviewAdExtension|An ad extension that contains third-party reviews (exact or paraphrased) about your business, products, or services. For more information, see [ReviewAdExtension](reviewadextension.md).|
 |<a name="sitelinkadextension"></a>SitelinkAdExtension|An ad extension that contains one site link. For more information, see [SitelinkAdExtension](sitelinkadextension.md).|
 |<a name="structuredsnippetadextension"></a>StructuredSnippetAdExtension|An ad extension that contains a header and values that tell customers more about your business. For more information, see [StructuredSnippetAdExtension](structuredsnippetadextension.md).|
