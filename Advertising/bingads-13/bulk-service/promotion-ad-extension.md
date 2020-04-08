@@ -1,61 +1,84 @@
 ---
-title: "Action Ad Extension Record - Bulk"
+title: "Promotion Ad Extension Record - Bulk"
 ms.service: bing-ads-bulk-service
 ms.topic: "article"
 author: "eric-urban"
 ms.author: "eur"
-description: Describes the Action Ad Extension fields in a Bulk file.
+description: Describes the Promotion Ad Extension fields in a Bulk file.
 dev_langs:
   - csharp
 ---
-# Action Ad Extension Record - Bulk
-Defines an action ad extension that can be downloaded and uploaded in a bulk file. 
+# Promotion Ad Extension Record - Bulk
+Defines a promotion ad extension that can be downloaded and uploaded in a bulk file.
 
-You can associate an action ad extension with the account or with campaigns and ad groups in the account. Each entity (account, campaign, or ad group) can be associated with up to 20 action ad extensions. Use the [Account Action Ad Extension](account-action-ad-extension.md), [Ad Group Action Ad Extension](ad-group-action-ad-extension.md), and [Campaign Action Ad Extension](campaign-action-ad-extension.md) records to manage action ad extension associations.
+You can associate a promotion ad extension with the account or with campaigns and ad groups in the account. Each entity (account, campaign, or ad group) can be associated with up to 20 promotion ad extensions. Use the [Account Promotion Ad Extension](account-promotion-ad-extension.md), [Ad Group Promotion Ad Extension](ad-group-promotion-ad-extension.md), and [Campaign Promotion Ad Extension](campaign-promotion-ad-extension.md) records to manage promotion ad extension associations.
 
-You can download all *Action Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *ActionAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
+You can download all *Promotion Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *PromotionAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
 
-The following Bulk CSV example would add a new Action Ad Extension to the account's shared library. 
+The following Bulk CSV example would add a new Promotion Ad Extension to the account's shared library. 
 
 ```csv
-Type,Status,Id,Parent Id,ClientId,Language,Start Date,End Date,Name,Ad Schedule,Use Searcher Time Zone,Action Type,Action Text,Final Url,Mobile Final Url,Tracking Template,Final Url Suffix,Custom Parameter
-Format Version,,,,,,,,6.0,,,,,,,,,
-Action Ad Extension,Active,-10,0,ClientIdGoesHere,English,,12/31/2019,,(Monday[09:00-21:00]);(Tuesday[09:00-21:00]);(Wednesday[09:00-21:00]);(Thursday[09:00-21:00]);(Friday[09:00-21:00]),false,ActNow,,https://www.contoso.com/womenshoesale,https://mobile.contoso.com/womenshoesale,,,{_promoCode}=PROMO1; {_season}=summer
+Type,Status,Id,Parent Id,Campaign,Ad Group,Client Id,Modified Time,Language,Start Date,End Date,Name,Version,Ad Schedule,Use Searcher Time Zone,Final Url,Mobile Final Url,Tracking Template,Custom Parameter,Promotion Target,Discount Modifier,Percent Off,Money Amount Off,Promotion Code,Orders Over Amount,Occasion,Promotion Start,Promotion End,Currency Code
+Format Version,,,,,,,,,,,6,,,,,,,,,,,,,,,,,
+Promotion Ad Extension,Active,-25,0,,,ClientIdGoesHere,,English,,12/31/2021,,,(Monday[09:00-21:00]),FALSE,https://www.contoso.com/womenshoesale,https://mobile.contoso.com/womenshoesale,,{_promoCode}=PROMO1; {_season}=summer,shoes,None,20000000,,SAVE20,,WomensDay,,12/31/2021,USD
 ```
 
-If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkActionAdExtension* object, instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
+If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkPromotionAdExtension* object (coming soon), instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
 
 ```csharp
 var uploadEntities = new List<BulkEntity>();
 
-// Map properties in the Bulk file to the BulkActionAdExtension
-var bulkActionAdExtension = new BulkActionAdExtension
+// Map properties in the Bulk file to the BulkPromotionAdExtension
+var bulkPromotionAdExtension = new BulkPromotionAdExtension
 {
     // 'Parent Id' column header in the Bulk file
     AccountId = 0,
     // 'Client Id' column header in the Bulk file
     ClientId = "ClientIdGoesHere",
-                
+
     // Map properties in the Bulk file to the 
-    // ActionAdExtension object of the Campaign Management service.
-    ActionAdExtension = new ActionAdExtension
+    // PromotionAdExtension object of the Campaign Management service.
+    PromotionAdExtension = new PromotionAdExtension
     {
         // 'Id' column header in the Bulk file
-        Id = actionAdExtensionIdKey,
-        // 'Action Type' column header in the Bulk file
-        ActionType = ActionAdExtensionActionType.ActNow,
-        // 'Mobile Final Url' column header in the Bulk file
-        FinalMobileUrls = new string[]
-        {
-            "https://mobile.contoso.com/womenshoesale"
-        },
-        // 'Final Url' column header in the Bulk file
-        FinalUrls = new string[]
-        {
-            "https://www.contoso.com/womenshoesale"
-        },
+        Id = promotionAdExtensionIdKey,
+        // 'Currency Code' column header in the Bulk file
+        CurrencyCode = "USD",
+        // 'Discount Modifier' column header in the Bulk file
+        DiscountModifier = PromotionDiscountModifier.None,
         // 'Language' column header in the Bulk file
         Language = "English",
+        // 'Money Amount Off' column header in the Bulk file
+        MoneyAmountOff = null,
+        // 'Orders Over Amount' column header in the Bulk file
+        OrdersOverAmount = null,
+        // 'Percent Off' column header in the Bulk file
+        PercentOff = 20000000,
+        // 'Promotion Code' column header in the Bulk file
+        PromotionCode = "SAVE20",
+        // 'Promotion Target' column header in the Bulk file
+        PromotionItem = "shoes",
+        // 'Occasion' column header in the Bulk file
+        PromotionOccasion = PromotionOccasion.WomensDay,
+        // 'Promotion End' column header in the Bulk file
+        PromotionEndDate = new Microsoft.BingAds.V13.CampaignManagement.Date
+        {
+            Month = 12,
+            Day = 31,
+            Year = DateTime.UtcNow.Year + 1
+        },
+        // 'Promotion Start' column header in the Bulk file
+        PromotionStartDate = null,
+        // 'Final Url' column header in the Bulk file
+        FinalUrls = new[] {
+            // Each Url is delimited by a semicolon (;) in the Bulk file
+            "https://www.contoso.com/womenshoesale"
+        },
+        // 'Mobile Final Url' column header in the Bulk file
+        FinalMobileUrls = new[] {
+            // Each Url is delimited by a semicolon (;) in the Bulk file
+            "https://mobile.contoso.com/womenshoesale"
+        },
         // 'Tracking Template' column header in the Bulk file
         TrackingUrlTemplate = null,
         // 'Custom Parameter' column header in the Bulk file
@@ -73,6 +96,7 @@ var bulkActionAdExtension = new BulkActionAdExtension
                 },
             }
         },
+                    
         // 'Ad Schedule' column header in the Bulk file
         Scheduling = new Schedule
         {
@@ -101,12 +125,13 @@ var bulkActionAdExtension = new BulkActionAdExtension
             // 'Use Searcher Time Zone' column header in the Bulk file
             UseSearcherTimeZone = false,
         },
+
         // 'Status' column header in the Bulk file
         Status = AdExtensionStatus.Active,
     },
 };
 
-uploadEntities.Add(bulkActionAdExtension);
+uploadEntities.Add(bulkPromotionAdExtension);
 
 var entityUploadParameters = new EntityUploadParameters
 {
@@ -120,13 +145,13 @@ var entityUploadParameters = new EntityUploadParameters
 var uploadResultEntities = (await BulkServiceManager.UploadEntitiesAsync(entityUploadParameters)).ToList();
 ```
 
-For a *Action Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
+For a *Promotion Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
 
-- [Action Text](#actiontext)
-- [Action Type](#actiontype)
 - [Ad Schedule](#adschedule)
 - [Client Id](#clientid)
+- [Currency Code](#currencycode)
 - [Custom Parameter](#customparameter)
+- [Discount Modifier](#discountmodifier)
 - [Editorial Location](#editoriallocation)
 - [Editorial Reason Code](#editorialreasoncode)
 - [Editorial Status](#editorialstatus)
@@ -138,34 +163,20 @@ For a *Action Ad Extension* record, the following attribute fields are available
 - [Language](#language)
 - [Mobile Final Url](#mobilefinalurl)
 - [Modified Time](#modifiedtime)
+- [Money Amount Off](#moneyamountoff)
+- [Occasion](#occasion)
+- [Orders Over Amount](#ordersoveramount)
 - [Parent Id](#parentid)
 - [Publisher Countries](#publishercountries)
+- [Promotion Code](#promotioncode)
+- [Promotion End](#promotionend)
+- [Promotion Start](#promotionstart)
+- [Promotion Target](#promotiontarget)
 - [Start Date](#startdate)
 - [Status](#status)
 - [Tracking Template](#trackingtemplate)
 - [Use Searcher Time Zone](#usesearchertimezone)
 - [Version](#version)
-
-
-## <a name="actiontext"></a>Action Text
-This localized text is displayed on your call-to-action button.
-
-The displayed action text will vary depending on the [Action Type](#actiontype) and [Language](#language) that you set. For example if the [Action Type](#actiontype) is "ActNow" and the [Language](#language) is "English", the displayed action text is "Act Now". For details on localized action text per language see [Action Text for Action Ad Extensions](../guides/ad-languages.md#actionadextension-actiontext).
-
-**Add:** Read-only  
-**Update:** Read-only    
-**Delete:** Read-only  
-
-## <a name="actiontype"></a>Action Type
-The action type that you choose here, as well as the [Language](#language) that you set, determines the [Action Text](#actiontext) that is displayed on your call-to-action button.
-
-The possible values for this field include: ActNow, ApplyNow, BetNow, BidNow, BookACar, BookHotel, BookNow, BuyNow, ChatNow, Compare, ContactUs, Coupon, Directions, Donate, Download, EmailNow, EnrollNow, FileNow, FindJob, FindStore, FreePlay, FreeQuote, FreeTrial, GetDeals, GetOffer, GetQuote, JoinNow, LearnMore, ListenNow, LogIn, OrderNow, PlayGame, PlayNow, PostJob, Register, RenewNow, RentACar, RentNow, Reorder, Reserve, Sale, SaveNow, Schedule, SeeMenu, SeeOffer, SellNow, ShopNow, Showtimes, SignIn, SignUp, StartNow, Subscribe, SwitchNow, TestDrive, TryNow, ViewCars, ViewPlans, VisitStore, VoteNow, Watch, WatchMore, WatchNow.
-
-Microsoft Advertising does not support all action types for all languages. If you attempt to use an unsupported action type and language combination, an error will be returned. For details see [Action Text for Action Ad Extensions](../guides/ad-languages.md#actionadextension-actiontext).
-
-**Add:** Required  
-**Update:** Required    
-**Delete:** Read-only  
 
 ## <a name="adschedule"></a>Ad Schedule
 The list of day and time ranges that you want the ad extension to be displayed with your ads. Each day and time range includes the scheduled day of week, start/end hour, and start/end minute. Each day and time range is enclosed by left and right parentheses, and separated from other day and time ranges with a semicolon (;) delimiter. Within each day and time range the format is *Day[StartHour:StartMinue-EndHour:EndMinute]*.
@@ -189,6 +200,13 @@ Used to associate records in the bulk upload file with records in the results fi
 **Update:** Optional    
 **Delete:** Read-only  
 
+## <a name="currencycode"></a>Currency Code
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
 ## <a name="customparameter"></a>Custom Parameter
 Your custom collection of key and value parameters for URL tracking.
 
@@ -209,6 +227,13 @@ In a bulk file, the list of custom parameters are formatted as follows.
 
 **Add:** Optional  
 **Update:** Optional. If no value is set for the update, the prior setting is removed.    
+**Delete:** Read-only  
+
+## <a name="discountmodifier"></a>Discount Modifier
+
+
+**Add:** Optional  
+**Update:** Optional  
 **Delete:** Read-only  
 
 ## <a name="editoriallocation"></a>Editorial Location
@@ -260,14 +285,24 @@ The end date is inclusive. For example, if you set this field to 12/31/2019, the
 **Delete:** Read-only  
 
 ## <a name="finalurl"></a>Final Url
-This is the link to your specific web page or form that corresponds to the action text.
+The landing page URL to use with optional tracking template and custom parameters.
 
-When the ad extension's Final Url isn't provided, the ad's final URL will be used.
+The following validation rules apply to Final URLs and Final Mobile URLs.
 
-The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
+- The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
 
-**Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.    
+- You may specify up to 10 items for both Final URLs and Final Mobile URLs; however, only the first item in each list is used for delivery. The service allows up to 10 for potential forward compatibility.
+
+- Each URL is delimited by a semicolon and space ("; ").
+
+- Usage of '{' and '}' is only allowed to delineate tags, for example "{lpurl}".
+
+- Each URL must be a well-formed URL starting with either http:// or https://.
+
+- If you specify Final Mobile URLs, you must also specify Final Url.
+
+**Add:** Required  
+**Update:** Required  
 **Delete:** Read-only  
 
 ## <a name="finalurlsuffix"></a>Final Url Suffix
@@ -283,29 +318,31 @@ The final URL suffix can include tracking parameters that will be appended to th
 ## <a name="id"></a>Id
 The system generated identifier of the ad extension.
 
-**Add:** Optional. You must either leave this field empty, or specify a negative identifier. A negative identifier set for the ad extension can then be referenced in the *Id* field of dependent record types such as [Ad Group Action Ad Extension](ad-group-action-ad-extension.md) and [Campaign Action Ad Extension](campaign-action-ad-extension.md). This is recommended if you are adding new ad extensions and new dependent records in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
+**Add:** Optional. You must either leave this field empty, or specify a negative identifier. A negative identifier set for the ad extension can then be referenced in the *Id* field of dependent record types such as [Ad Group Promotion Ad Extension](ad-group-promotion-ad-extension.md) and [Campaign Promotion Ad Extension](campaign-promotion-ad-extension.md). This is recommended if you are adding new ad extensions and new dependent records in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
 **Update:** Read-only and Required  
 **Delete:** Read-only and Required  
 
 ## <a name="language"></a>Language
-The language that the ad extension will be served in.
 
-The extension will always be served in this language, regardless of the campaign or ad group's language settings.
 
-The supported language strings are: Danish, Dutch, English, Finnish, French, German, Italian, Norwegian, Portuguese, Spanish, Swedish, and TraditionalChinese. 
-
-Microsoft Advertising does not support all action types for all languages. If you attempt to use an unsupported action type and language combination, an error will be returned. For details see [Action Text for Action Ad Extensions](../guides/ad-languages.md#actionadextension-actiontext).
-
-**Add:** Required  
-**Update:** Required  
+**Add:** Optional  
+**Update:** Optional  
 **Delete:** Read-only  
 
 ## <a name="mobilefinalurl"></a>Mobile Final Url
-This is a mobile-friendly landing page URL when Action Extensions are served on mobile devices.
+The following validation rules apply to Final URLs and Final Mobile URLs.
 
-If you specify Mobile Final Url, you must also specify [Final Url](#finalurl).
+- The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
 
-The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
+- You may specify up to 10 items for both Final URLs and Final Mobile URLs; however, only the first item in each list is used for delivery. The service allows up to 10 for potential forward compatibility.
+
+- Each URL is delimited by a semicolon and space ("; ").
+
+- Usage of '{' and '}' is only allowed to delineate tags, for example "{lpurl}".
+
+- Each URL must be a well-formed URL starting with either http:// or https://.
+
+- If you specify Final Mobile URLs, you must also specify Final Url.
 
 **Add:** Optional  
 **Update:** Optional. If no value is set for the update, the prior setting is removed.    
@@ -319,6 +356,27 @@ The date and time that the entity was last updated. The value is in Coordinated 
 
 **Add:** Read-only  
 **Update:** Read-only  
+**Delete:** Read-only  
+
+## <a name="moneyamountoff"></a>Money Amount Off
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="occasion"></a>Occasion
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="ordersoveramount"></a>Orders Over Amount
+
+
+**Add:** Optional  
+**Update:** Optional  
 **Delete:** Read-only  
 
 ## <a name="parentid"></a>Parent Id
@@ -339,6 +397,41 @@ In a bulk file, the list of publisher countries are delimited with a semicolon (
 **Update:** Read-only  
 **Delete:** Read-only  
 
+## <a name="percentoff"></a>Percent Off
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="promotioncode"></a>Promotion Code
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="promotionend"></a>Promotion End
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="promotionstart"></a>Promotion Start
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
+## <a name="promotiontarget"></a>Promotion Target
+
+
+**Add:** Optional  
+**Update:** Optional  
+**Delete:** Read-only  
+
 ## <a name="startdate"></a>Start Date
 The ad extension scheduled start date string formatted as *MM/DD/YYYY*.
 
@@ -354,11 +447,11 @@ The status of the ad extension.
 Possible values are *Active* or *Deleted*. 
 
 **Add:** Optional. The default value is *Active*.  
-**Update:** Optional. If no value is set for the update, this setting is not changed.      
+**Update:** Optional. If no value is set for the update, this setting is not changed.    
 **Delete:** Required. The Status must be set to *Deleted*.
 
 ## <a name="trackingtemplate"></a>Tracking Template
-The tracking template to use for your action URL.
+The tracking template to use for your promotion URLs.
 
 The following validation rules apply to tracking templates. For more details about supported templates and parameters, see the Microsoft Advertising help article [What tracking or URL parameters can I use?](https://help.ads.microsoft.com/#apex/3/en/56799/2)
 
@@ -371,7 +464,7 @@ The following validation rules apply to tracking templates. For more details abo
 - Microsoft Advertising does not validate whether custom parameters exist. If you use custom parameters in your tracking template and they do not exist, then the landing page URL will include the key and value placeholders of your custom parameters without substitution. For example, if your tracking template is *https://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}*, and neither *{_season}* or *{_promocode}* are defined at the campaign, ad group, criterion, keyword, or ad level, then the landing page URL will be the same.
 
 **Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.     
+**Update:** Optional. If no value is set for the update, the prior setting is removed.    
 **Delete:** Read-only  
 
 ## <a name="usesearchertimezone"></a>Use Searcher Time Zone

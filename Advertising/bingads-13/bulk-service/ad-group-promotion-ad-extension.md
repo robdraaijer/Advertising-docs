@@ -1,40 +1,40 @@
 ---
-title: "Ad Group Image Ad Extension Record - Bulk"
+title: "Ad Group Promotion Ad Extension Record - Bulk"
 ms.service: bing-ads-bulk-service
 ms.topic: "article"
 author: "eric-urban"
 ms.author: "eur"
-description: Describes the Ad Group Image Ad Extension fields in a Bulk file.
+description: Describes the Ad Group Promotion Ad Extension fields in a Bulk file.
 dev_langs:
   - csharp
 ---
-# Ad Group Image Ad Extension Record - Bulk
-Defines an association record between an [Ad Group](ad-group.md) and an [Image Ad Extension](image-ad-extension.md) that can be uploaded and downloaded in a bulk file. To upload or download the ad group or image ad extension, use the [Ad Group](ad-group.md) or [Image Ad Extension](image-ad-extension.md) record.
+# Ad Group Promotion Ad Extension Record - Bulk
+Defines an association record between an [Ad Group](ad-group.md) and a [Promotion Ad Extension](promotion-ad-extension.md) that can be uploaded and downloaded in a bulk file. To upload or download the ad group or promotion ad extension, use the [Ad Group](ad-group.md) or [Promotion Ad Extension](promotion-ad-extension.md) record. 
 
-You can download all *Ad Group Image Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *AdGroupImageAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
+You can download all *Ad Group Promotion Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *AdGroupPromotionAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
 
-The following Bulk CSV example would associate an image ad extension to an ad group if valid [Id](#id) and [Parent Id](#parentid) values are provided. 
+The following Bulk CSV example would associate a promotion ad extension to an ad group if valid [Id](#id) and [Parent Id](#parentid) values are provided. 
 
 ```csv
 Type,Status,Id,Parent Id,Campaign,Ad Group,Client Id,Modified Time,Name
 Format Version,,,,,,,,6.0
-Ad Group Image Ad Extension,Active,-11,-1111,,,ClientIdGoesHere,,
+Ad Group Promotion Ad Extension,Active,-11,-1111,,,ClientIdGoesHere,,
 ```
 
-If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkAdGroupImageAdExtension* object, instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
+If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkAdGroupPromotionAdExtension* object (coming soon), instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
 
 ```csharp
 var uploadEntities = new List<BulkEntity>();
 
-// Map properties in the Bulk file to the BulkAdGroupImageAdExtension
-var bulkAdGroupImageAdExtension = new BulkAdGroupImageAdExtension
+// Map properties in the Bulk file to the BulkAdGroupPromotionAdExtension
+var bulkAdGroupPromotionAdExtension = new BulkAdGroupPromotionAdExtension
 {
     // Map properties in the Bulk file to the 
     // AdExtensionIdToEntityIdAssociation object of the Campaign Management service.
     AdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation
     {
         // 'Id' column header in the Bulk file
-        AdExtensionId = imageAdExtensionIdKey,
+        AdExtensionId = promotionAdExtensionIdKey,
         // 'Parent Id' column header in the Bulk file
         EntityId = adGroupIdKey,
     },
@@ -45,7 +45,7 @@ var bulkAdGroupImageAdExtension = new BulkAdGroupImageAdExtension
     Status = Status.Active,
 };
 
-uploadEntities.Add(bulkAdGroupImageAdExtension);
+uploadEntities.Add(bulkAdGroupPromotionAdExtension);
 
 var entityUploadParameters = new EntityUploadParameters
 {
@@ -58,8 +58,8 @@ var entityUploadParameters = new EntityUploadParameters
 
 var uploadResultEntities = (await BulkServiceManager.UploadEntitiesAsync(entityUploadParameters)).ToList();
 ```
-	
-For an *Ad Group Image Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
+
+For an *Ad Group Promotion Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
 
 - [Ad Group](#adgroup)
 - [Campaign](#campaign)
@@ -136,9 +136,9 @@ This field will not be set if a combination of terms caused the failure or if th
 ## <a name="id"></a>Id
 The identifier of the ad extension that is associated or removed from the ad group.
 
-This bulk field maps to the *Id* field of the [Image Ad Extension](image-ad-extension.md) record. 
+This bulk field maps to the *Id* field of the [Promotion Ad Extension](promotion-ad-extension.md) record. 
 
-**Add:** Read-only and Required. You must either specify an existing ad extension identifier, or specify a negative identifier that is equal to the *Id* field of the parent [Image Ad Extension](image-ad-extension.md) record. This is recommended if you are adding new ad extensions and associations in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
+**Add:** Read-only and Required. You must either specify an existing ad extension identifier, or specify a negative identifier that is equal to the *Id* field of the parent [Promotion Ad Extension](promotion-ad-extension.md) record. This is recommended if you are adding new ad extensions and associations in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
 **Delete:** Read-only and Required  
 
 ## <a name="modifiedtime"></a>Modified Time

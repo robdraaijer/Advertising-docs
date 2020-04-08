@@ -1,42 +1,42 @@
 ---
-title: "Campaign Sitelink Ad Extension Record - Bulk"
+title: "Account Promotion Ad Extension Record - Bulk"
 ms.service: bing-ads-bulk-service
 ms.topic: "article"
 author: "eric-urban"
 ms.author: "eur"
-description: Describes the Campaign Sitelink Ad Extension fields in a Bulk file.
+description: Describes the Account Promotion Ad Extension fields in a Bulk file.
 dev_langs:
   - csharp
 ---
-# Campaign Sitelink Ad Extension Record - Bulk
-Defines an association record between a [Campaign](campaign.md) and a [Sitelink Ad Extension](sitelink-ad-extension.md) that can be uploaded and downloaded in a bulk file. To upload or download the campaign or sitelink ad extension, use the [Campaign](campaign.md) or [Sitelink Ad Extension](sitelink-ad-extension.md) record.
+# Account Promotion Ad Extension Record - Bulk
+Defines an association record between an [Account](account.md) and a [Promotion Ad Extension](promotion-ad-extension.md) that can be uploaded and downloaded in a bulk file. To upload or download the account or promotion ad extension, use the [Account](account.md) or [Promotion Ad Extension](promotion-ad-extension.md) record.
 
-You can download all *Campaign Sitelink Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *CampaignSitelinkAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
+You can download all *Account Promotion Ad Extension* records in the account by including the [DownloadEntity](downloadentity.md) value of *AccountPromotionAdExtensions* in the [DownloadCampaignsByAccountIds](downloadcampaignsbyaccountids.md) or [DownloadCampaignsByCampaignIds](downloadcampaignsbycampaignids.md) service request. Additionally the download request must include the [EntityData](datascope.md#entitydata) scope. For more details about the Bulk service including best practices, see [Bulk Download and Upload](../guides/bulk-download-upload.md).
 
-The following Bulk CSV example would associate a sitelink ad extension to a campaign if valid [Id](#id) and [Parent Id](#parentid) values are provided. 
+The following Bulk CSV example would associate a promotion ad extension to an account if the valid *Id* is provided. 
 
 ```csv
-Type,Status,Id,Parent Id,Campaign,Ad Group,Client Id,Modified Time,Name
-Format Version,,,,,,,,6.0
-Campaign Sitelink Ad Extension,Active,-11,-1111,,,ClientIdGoesHere,,
+Type,Status,Id,Parent Id,Client Id,Modified Time,Name
+Format Version,,,,,,6.0
+Account Promotion Ad Extension,Active,-11,,ClientIdGoesHere,,
 ```
 
-If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkCampaignSitelinkAdExtension* object, instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
+If you are using the [Bing Ads SDKs](../guides/client-libraries.md) for .NET, Java, or Python, you can save time using the [BulkServiceManager](../guides/sdk-bulk-service-manager.md) to upload and download the *BulkAccountPromotionAdExtension* object (coming soon), instead of calling the service operations directly and writing custom code to parse each field in the bulk file. 
 
 ```csharp
 var uploadEntities = new List<BulkEntity>();
 
-// Map properties in the Bulk file to the BulkCampaignSitelinkAdExtension
-var bulkCampaignSitelinkAdExtension = new BulkCampaignSitelinkAdExtension
+// Map properties in the Bulk file to the BulkAccountPromotionAdExtension
+var bulkAccountPromotionAdExtension = new BulkAccountPromotionAdExtension
 {
     // Map properties in the Bulk file to the 
     // AdExtensionIdToEntityIdAssociation object of the Campaign Management service.
     AdExtensionIdToEntityIdAssociation = new AdExtensionIdToEntityIdAssociation
     {
         // 'Id' column header in the Bulk file
-        AdExtensionId = sitelinkAdExtensionIdKey,
+        AdExtensionId = promotionAdExtensionIdKey,
         // 'Parent Id' column header in the Bulk file
-        EntityId = campaignIdKey,
+        EntityId = accountIdKey,
     },
                 
     // 'Client Id' column header in the Bulk file
@@ -45,7 +45,7 @@ var bulkCampaignSitelinkAdExtension = new BulkCampaignSitelinkAdExtension
     Status = Status.Active,
 };
 
-uploadEntities.Add(bulkCampaignSitelinkAdExtension);
+uploadEntities.Add(bulkAccountPromotionAdExtension);
 
 var entityUploadParameters = new EntityUploadParameters
 {
@@ -58,10 +58,9 @@ var entityUploadParameters = new EntityUploadParameters
 
 var uploadResultEntities = (await BulkServiceManager.UploadEntitiesAsync(entityUploadParameters)).ToList();
 ```
+	
+For an *Account Promotion Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
 
-For a *Campaign Sitelink Ad Extension* record, the following attribute fields are available in the [Bulk File Schema](bulk-file-schema.md). 
-
-- [Campaign](#campaign)
 - [Client Id](#clientid)
 - [Editorial Location](#editoriallocation)
 - [Editorial Reason Code](#editorialreasoncode)
@@ -72,15 +71,6 @@ For a *Campaign Sitelink Ad Extension* record, the following attribute fields ar
 - [Parent Id](#parentid)
 - [Publisher Countries](#publishercountries)
 - [Status](#status)
-
-## <a name="campaign"></a>Campaign
-The name of the campaign where this ad extension is associated or removed.
-
-**Add:** Read-only and Required  
-**Delete:** Read-only and Required  
-
-> [!NOTE]
-> For add and delete, you must specify either the [Parent Id](#parentid) or [Campaign](#campaign).
 
 ## <a name="clientid"></a>Client Id
 Used to associate records in the bulk upload file with records in the results file. The value of this field is not used or stored by the server; it is simply copied from the uploaded record to the corresponding result record. It may be any valid string to up 100 in length.
@@ -124,11 +114,12 @@ This field will not be set if a combination of terms caused the failure or if th
 **Delete:** Read-only  
 
 ## <a name="id"></a>Id
-The identifier of the ad extension that is associated or removed from the campaign.
+The identifier of the ad extension that is associated or removed from the account.
 
-This bulk field maps to the *Id* field of the [Sitelink Ad Extension](sitelink-ad-extension.md) record. 
+This bulk field maps to the *Id* field of the [Promotion Ad Extension](promotion-ad-extension.md) record. 
 
-**Add:** Read-only and Required. You must either specify an existing ad extension identifier, or specify a negative identifier that is equal to the *Id* field of the parent [Sitelink Ad Extension](sitelink-ad-extension.md) record. This is recommended if you are adding new ad extensions and associations in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
+**Add:** Read-only and Required. You must either specify an existing ad extension identifier, or specify a negative identifier that is equal to the *Id* field of the parent [Promotion Ad Extension](promotion-ad-extension.md) record. This is recommended if you are adding new ad extensions and associations in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
+**Update:** Read-only and Required  
 **Delete:** Read-only and Required  
 
 ## <a name="modifiedtime"></a>Modified Time
@@ -141,15 +132,12 @@ The date and time that the entity was last updated. The value is in Coordinated 
 **Delete:** Read-only  
 
 ## <a name="parentid"></a>Parent Id
-The identifier of the campaign where this ad extension is associated or removed.
+The identifier of the account where this ad extension is associated or removed.
 	
-This bulk field maps to the *Id* field of the [Campaign](campaign.md) record. 
+This bulk field maps to the *Id* field of the [Account](account.md) record. 
 
-**Add:** Read-only and Required. You must either specify an existing campaign identifier, or specify a negative identifier that is equal to the *Id* field of the parent [Campaign](campaign.md) record. This is recommended if you are associating ad extensions to a new campaign in the same Bulk file. For more information, see [Bulk File Schema Reference Keys](../bulk-service/bulk-file-schema.md#referencekeys).  
-**Delete:** Read-only and Required  
-
-> [!NOTE]
-> For add and delete, you must specify either the [Parent Id](#parentid) or [Campaign](#campaign).
+**Add:** Read-only  
+**Delete:** Read-only  
 
 ## <a name="publishercountries"></a>Publisher Countries
 The list of publisher countries whose editorial guidelines do not allow the specified [term](#editorialterm).
@@ -160,9 +148,9 @@ In a bulk file, the list of publisher countries are delimited with a semicolon (
 **Delete:** Read-only  
 
 ## <a name="status"></a>Status
-Represents the association status between the campaign and the ad extension. 
+Represents the association status between the account and the ad extension. 
 
-Possible values are *Active* and *Deleted*. If the ad extension is associated with the campaign, this field's value is *Active*.
+Possible values are *Active* and *Deleted*. If the ad extension is associated with the account, this field's value is *Active*.
 
 **Add:** Read-only  
 **Delete:** Required. The Status must be set to *Deleted*. 
