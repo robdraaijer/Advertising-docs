@@ -419,7 +419,7 @@ The Scheduling can limit the promotion to a shorter timeframe within the occasio
 |<a name="womensday"></a>WomensDay|The "Women's Day" promotion can run from February 15 through March 31.|
 |<a name="yearendgift"></a>YearEndGift|The "Year-End Gift" promotion can run anytime according to your ad extension scheduling.|
 
-**Add:** Optional. If you do not specify this field or leave it empty, the default value of [None](promotionoccasion.md#none) will be set.  
+**Add:** Optional. If you do not specify this field or leave it empty, the default value of [None](#none) will be set.  
 **Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
