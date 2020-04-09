@@ -201,10 +201,12 @@ Used to associate records in the bulk upload file with records in the results fi
 **Delete:** Read-only  
 
 ## <a name="currencycode"></a>Currency Code
+The currency code for the promotion price or discount.
 
+The supported currency codes are ARS, AUD, BRL, CAD, CHF, CLP, CNY, COP, DKK, EUR, GBP, HKD, INR, MXN, NZD, PEN, PHP, PLN, SEK, SGD, USD, TWD, and VEF.
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Required    
+**Update:** Required    
 **Delete:** Read-only  
 
 ## <a name="customparameter"></a>Custom Parameter
@@ -230,10 +232,15 @@ In a bulk file, the list of custom parameters are formatted as follows.
 **Delete:** Read-only  
 
 ## <a name="discountmodifier"></a>Discount Modifier
+The promotion discount modifier.
 
+The possible values for this field are *None* and *UpTo*. 
 
-**Add:** Optional  
-**Update:** Optional  
+- None: The promotion discount is not modified.
+- UpTo: The promotion discount is modified with the "Up to" string prefix. For example, if the unmodified promotion discount would be "$20 off shoes", the modified promotion is "Up to $20 off shoes".
+
+**Add:** Optional. If you do not specify this field or leave it empty, the default value of *None* will be set.  
+**Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
 ## <a name="editoriallocation"></a>Editorial Location
@@ -258,9 +265,9 @@ Possible values are described in the table below.
 |Value|Description|
 |-----------|---------------|
 |<a name="editorialstatusactive"></a>Active|The ad extension passed editorial review.|
-|<a name="editorialstatusactivelimited"></a>ActiveLimited|The ad extension passed editorial review in one or more markets, and one or more elements of the ad extension is undergoing editorial review in another market. For example the ad extension passed editorial review for Canada and is still pending review in the United States.|
+|<a name="editorialstatusactivelimited"></a>ActiveLimited|The ad extension passed editorial review in one or more markets, and one or more fields of the ad extension is undergoing editorial review in another market. For example the ad extension passed editorial review for Canada and is still pending review in the United States.|
 |<a name="editorialstatusdisapproved"></a>Disapproved|The ad extension failed editorial review.|
-|<a name="editorialstatusinactive"></a>Inactive|One or more elements of the ad extension is undergoing editorial review.|
+|<a name="editorialstatusinactive"></a>Inactive|One or more fields of the ad extension is undergoing editorial review.|
 
 **Add:** Read-only  
 **Update:** Read-only  
@@ -285,21 +292,15 @@ The end date is inclusive. For example, if you set this field to 12/31/2019, the
 **Delete:** Read-only  
 
 ## <a name="finalurl"></a>Final Url
-The landing page URL to use with optional tracking template and custom parameters.
+The landing page URL.
 
-The following validation rules apply to Final URLs and Final Mobile URLs.
-
+The following validation rules apply to Final URLs and Final Mobile URLs.  
 - The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
-
-- You may specify up to 10 items for both Final URLs and Final Mobile URLs; however, only the first item in each list is used for delivery. The service allows up to 10 for potential forward compatibility.
-
-- Each URL is delimited by a semicolon and space ("; ").
-
-- Usage of '{' and '}' is only allowed to delineate tags, for example "{lpurl}".
-
-- Each URL must be a well-formed URL starting with either http:// or https://.
-
-- If you specify Final Mobile URLs, you must also specify Final Url.
+- You may specify up to 10 list items for both [Final Url](#finalurl) and [Mobile Final Url](#mobilefinalurl); however, only the first item in each list is used for delivery. The service allows up to 10 list items for potential forward compatibility.  
+- Each URL is delimited by a semicolon and space ("; ").  
+- Usage of '{' and '}' is only allowed to delineate tags, for example *{lpurl}*.  
+- Final URLs must each be a well-formed URL starting with either http:// or https://.  
+- If you specify [Mobile Final Url](#mobilefinalurl), you must also specify [Final Url](#finalurl).  
 
 **Add:** Required  
 **Update:** Required  
@@ -323,26 +324,26 @@ The system generated identifier of the ad extension.
 **Delete:** Read-only and Required  
 
 ## <a name="language"></a>Language
+The language that the ad extension will be served in.  
 
+The extension will always be served in this language, regardless of the campaign or ad group's language settings.  
 
-**Add:** Optional  
-**Update:** Optional  
+The supported language strings are: Danish, Dutch, English, Finnish, French, German, Italian, Norwegian, Portuguese, Spanish, Swedish, and TraditionalChinese.  
+
+**Add:** Required  
+**Update:** Required  
 **Delete:** Read-only  
 
 ## <a name="mobilefinalurl"></a>Mobile Final Url
-The following validation rules apply to Final URLs and Final Mobile URLs.
+The landing page URL for mobile devices.
 
-- The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.
-
-- You may specify up to 10 items for both Final URLs and Final Mobile URLs; however, only the first item in each list is used for delivery. The service allows up to 10 for potential forward compatibility.
-
-- Each URL is delimited by a semicolon and space ("; ").
-
-- Usage of '{' and '}' is only allowed to delineate tags, for example "{lpurl}".
-
-- Each URL must be a well-formed URL starting with either http:// or https://.
-
-- If you specify Final Mobile URLs, you must also specify Final Url.
+The following validation rules apply to Final URLs and Final Mobile URLs.  
+- The length of the URL is limited to 2,048 characters. The HTTP or HTTPS protocol string does count towards the 2,048 character limit.  
+- You may specify up to 10 list items for both [Final Url](#finalurl) and [Mobile Final Url](#mobilefinalurl); however, only the first item in each list is used for delivery. The service allows up to 10 list items for potential forward compatibility.  
+- Each URL is delimited by a semicolon and space ("; ").  
+- Usage of '{' and '}' is only allowed to delineate tags, for example *{lpurl}*.  
+- Final URLs must each be a well-formed URL starting with either http:// or https://.  
+- If you specify [Mobile Final Url](#mobilefinalurl), you must also specify [Final Url](#finalurl).  
 
 **Add:** Optional  
 **Update:** Optional. If no value is set for the update, the prior setting is removed.    
@@ -359,24 +360,76 @@ The date and time that the entity was last updated. The value is in Coordinated 
 **Delete:** Read-only  
 
 ## <a name="moneyamountoff"></a>Money Amount Off
+The money off promotion value.
 
+For example, to promote "$20 off shoes - On orders over $100", set the [Promotion Target](#promotiontarget) to "shoes", set [Currency Code](#currencycode) to "USD", set [Money Amount Off](#moneyamountoff) to 20, and set [Orders Over Amount](#ordersoveramount) to 100. 
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
+**Update:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
 **Delete:** Read-only  
 
 ## <a name="occasion"></a>Occasion
+The promotion occasion.
 
+Both the promotion [Occasion](#occasion) and Scheduling ([Ad Schedule](#adschedule), [End Date](#enddate), [Start Date](#startdate), and [Use Searcher Time Zone](#usesearchertimezone) fields) fields determine when the promotion is eligible to be shown in ads.  
 
-**Add:** Optional  
-**Update:** Optional  
+The promotion [Occasion](#occasion) determines the time period or seasonality e.g., [WomensDay](#womensday) from February 15 through March 31 each year. The promotion will only run within the dates corresponding to the occasion that you set. See the table below for details about the defined date range for each occasion.  
+
+The Scheduling can limit the promotion to a shorter timeframe within the occasion's date range e.g., limit the promotion to run from February 20 through March 8. The Scheduling can also be used to run the same promotion multiple years e.g., run the [WomensDay](#womensday) promotion every year from February 15 through March 31.  
+
+|Occasion Value|Description|
+|-----------|---------------|
+|<a name="backtoschool"></a>BackToSchool|The "Back to School" promotion can run anytime according to your ad extension scheduling.|
+|<a name="blackfriday"></a>BlackFriday|The "Black Friday" promotion can run from October 15 through December 15.|
+|<a name="boxingday"></a>BoxingDay|The "Boxing Day" promotion can run from December 15 through January 15.|
+|<a name="carnival"></a>Carnival|The "Carnival" promotion can run from February 1 through March 31.|
+|<a name="chinesenewyear"></a>ChineseNewYear|The "Chinese New Year" promotion can run from January 15 through March 1.|
+|<a name="christmas"></a>Christmas|The "Christmas" promotion can run from November 1 through January 15.|
+|<a name="cybermonday"></a>CyberMonday|The "Cyber Monday" promotion can run from October 15 through December 15.|
+|<a name="diwali"></a>Diwali|The "Diwali" promotion can run from September 1 through December 1.|
+|<a name="easter"></a>Easter|The "Easter" promotion can run from March 1 through April 30.|
+|<a name="eidaladha"></a>EidAlAdha|The "Eid al-Adha" promotion can run anytime according to your ad extension scheduling.|
+|<a name="eidalfitr"></a>EidAlFitr|The "Eid al-Fitr" promotion can run anytime according to your ad extension scheduling.|
+|<a name="endofseason"></a>EndOfSeason|The "End of Season" promotion can run anytime according to your ad extension scheduling.|
+|<a name="epiphany"></a>Epiphany|The "Epiphany" promotion can run from December 15 through January 31.|
+|<a name="fallsale"></a>FallSale|The "Fall Sale" promotion can run anytime according to your ad extension scheduling.|
+|<a name="fathersday"></a>FathersDay|The "Father's Day" promotion can run anytime according to your ad extension scheduling.|
+|<a name="halloween"></a>Halloween|The "Halloween" promotion can run from October 1 through November 15.|
+|<a name="hanukkah"></a>Hanukkah|The "Hanukkah" promotion can run from November 15 through January 31.|
+|<a name="holi"></a>Holi|The "Holi" promotion can run from February 1 through March 31.|
+|<a name="independenceday"></a>IndependenceDay|The "Independence Day" promotion can run anytime according to your ad extension scheduling.|
+|<a name="laborday"></a>LaborDay|The "Labor Day" promotion can run from April 15 through September 15.|
+|<a name="mothersday"></a>MothersDay|The "Mother's Day" promotion can run anytime according to your ad extension scheduling.|
+|<a name="nationalday"></a>NationalDay|The "National Day" promotion can run anytime according to your ad extension scheduling.|
+|<a name="navratri"></a>Navratri|The "Navratri" promotion can run from September 15 through October 31.|
+|<a name="newyears"></a>NewYears|The "New Year's" promotion can run from December 1 through February 28.|
+|<a name="none"></a>None|The promotion can run anytime according to your ad extension scheduling.|
+|<a name="parentsday"></a>ParentsDay|The "Parent's Day" promotion can run from April 15 through August 1.|
+|<a name="passover"></a>Passover|The "Passover" promotion can run from February 15 through May 1.|
+|<a name="ramadan"></a>Ramadan|The "Ramadan" promotion can run anytime according to your ad extension scheduling.|
+|<a name="roshhashanah"></a>RoshHashanah|The "Rosh Hashanah" promotion can run from August 15 through November 1.|
+|<a name="singlesday"></a>SinglesDay|The "Single's Day" promotion can run from October 15 through November 30.|
+|<a name="songkran"></a>Songkran|The "Songkran" promotion can run anytime according to your ad extension scheduling.|
+|<a name="springsale"></a>SpringSale|The "Spring Sale" promotion can run anytime according to your ad extension scheduling.|
+|<a name="stnicholasday"></a>StNicholasDay|The "St. Nicholas Day" promotion can run from November 1 through December 31.|
+|<a name="summersale"></a>SummerSale|The "Summer Sale" promotion can run anytime according to your ad extension scheduling.|
+|<a name="unknown"></a>Unknown|Reserved for future use.|
+|<a name="valentinesday"></a>ValentinesDay|The "Valentine's Day" promotion can run from January 15 through February 28.|
+|<a name="wintersale"></a>WinterSale|The "Winter Sale" promotion can run anytime according to your ad extension scheduling.|
+|<a name="womensday"></a>WomensDay|The "Women's Day" promotion can run from February 15 through March 31.|
+|<a name="yearendgift"></a>YearEndGift|The "Year-End Gift" promotion can run anytime according to your ad extension scheduling.|
+
+**Add:** Optional. If you do not specify this field or leave it empty, the default value of [None](promotionoccasion.md#none) will be set.  
+**Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
 ## <a name="ordersoveramount"></a>Orders Over Amount
+The orders over amount value appended to the promotion target.
 
+For example, to promote "$20 off shoes - On orders over $100", set the [Promotion Target](#promotiontarget) to "shoes", set [Currency Code](#currencycode) to "USD", set [Money Amount Off](#moneyamountoff) to 20, and set [Orders Over Amount](#ordersoveramount) to 100.
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode).  
+**Update:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode). If no value is set for the update, this setting is not changed. If you set this field to '0' (zero), the previous setting will be deleted.  
 **Delete:** Read-only  
 
 ## <a name="parentid"></a>Parent Id
@@ -398,38 +451,48 @@ In a bulk file, the list of publisher countries are delimited with a semicolon (
 **Delete:** Read-only  
 
 ## <a name="percentoff"></a>Percent Off
+The percent off promotion value in micros.
 
+For example, 10000000 represents a 10% discount.
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
+**Update:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
 **Delete:** Read-only  
 
 ## <a name="promotioncode"></a>Promotion Code
+The promotion code appended to the promotion target.
 
+For example, to promote "$20 off shoes - Promocode SAVE20", set the [Promotion Target](#promotiontarget) to "shoes", set [Currency Code](#currencycode) to "USD", set [Money Amount Off](#moneyamountoff) to 20, and set [Promotion Code](#promotioncode) to "SAVE20".
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode).  
+**Update:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode). If no value is set for the update, this setting is not changed. If you set this field to to the *delete_value* string, the previous setting will be deleted.  
 **Delete:** Read-only  
 
 ## <a name="promotionend"></a>Promotion End
+The end date that will be displayed in the ad.
 
+This property does not override the inherent delivery range for a promotion [Occasion](#occasion).  
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Optional. If you leave this field nil or empty the promotion will not expire.  
+**Update:** Optional. If no value is set for the update, this setting is not changed. To delete the current end date and effectively set no end date, set this field to the *delete_value* string. When you retrieve the experiment next time, this field will not be set.  
 **Delete:** Read-only  
 
 ## <a name="promotionstart"></a>Promotion Start
+The promotion start date that will be displayed in the ad.
 
+This property does not override the inherent delivery range for a promotion [Occasion](#occasion).  
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Optional. If you do not set the start date, then by default the service uses today's date.  
+**Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
 ## <a name="promotiontarget"></a>Promotion Target
+The promotion target or item.
 
+For example, you might run a promotion for "shoes" at either $20 or 20% discount. To run a promotion for "Up to $20 off shoes", set the [Promotion Target](#promotiontarget) to "shoes", set the [Discount Modifier](#discountmodifier) to "UpTo", set [Currency Code](#currencycode) to "USD", and set [Money Amount Off](#moneyamountoff) to 20.
 
-**Add:** Optional  
-**Update:** Optional  
+**Add:** Required  
+**Update:** Required  
 **Delete:** Read-only  
 
 ## <a name="startdate"></a>Start Date
