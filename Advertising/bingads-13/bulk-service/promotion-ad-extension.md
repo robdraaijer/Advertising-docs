@@ -206,7 +206,7 @@ The currency code for the promotion price or discount.
 The supported currency codes are ARS, AUD, BRL, CAD, CHF, CLP, CNY, COP, DKK, EUR, GBP, HKD, INR, MXN, NZD, PEN, PHP, PLN, SEK, SGD, USD, TWD, and VEF.
 
 **Add:** Required    
-**Update:** Required    
+**Update:** Optional. If no value is set for the update, this setting is not changed.    
 **Delete:** Read-only  
 
 ## <a name="customparameter"></a>Custom Parameter
@@ -228,7 +228,7 @@ In a bulk file, the list of custom parameters are formatted as follows.
     > With the Bulk service the Key must be formatted with surrounding braces and a leading underscore, for example if the Key is promoCode, it must be formatted as {_promoCode}. With the Campaign Management service you cannot specify the surrounding braces and underscore.
 
 **Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.    
+**Update:** Optional. If no value is set for the update, this setting is not changed. To remove all custom parameters, set this field to *delete_value*. The *delete_value* keyword removes the previous setting. To remove a subset of custom parameters, specify the custom parameters that you want to keep and omit any that you do not want to keep. The new set of custom parameters will replace any previous custom parameter set.    
 **Delete:** Read-only  
 
 ## <a name="discountmodifier"></a>Discount Modifier
@@ -303,7 +303,7 @@ The following validation rules apply to Final URLs and Final Mobile URLs.
 - If you specify [Mobile Final Url](#mobilefinalurl), you must also specify [Final Url](#finalurl).  
 
 **Add:** Required  
-**Update:** Required  
+**Update:** Optional. If no value is set for the update, this setting is not changed.   
 **Delete:** Read-only  
 
 ## <a name="finalurlsuffix"></a>Final Url Suffix
@@ -313,7 +313,7 @@ The final URL suffix can include tracking parameters that will be appended to th
 > This feature is only available for customers in the Final URL Suffix Phase 3 pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 636). If you are not in the pilot this property will be ignored and no error will be returned.  
 
 **Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.  
+**Update:** Optional. If no value is set for the update, this setting is not changed. If you set this field to the *delete_value* string, the prior setting is removed.  
 **Delete:** Read-only  
 
 ## <a name="id"></a>Id
@@ -331,7 +331,7 @@ The extension will always be served in this language, regardless of the campaign
 The supported language strings are: Danish, Dutch, English, Finnish, French, German, Italian, Norwegian, Portuguese, Spanish, Swedish, and TraditionalChinese.  
 
 **Add:** Required  
-**Update:** Required  
+**Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
 ## <a name="mobilefinalurl"></a>Mobile Final Url
@@ -346,7 +346,7 @@ The following validation rules apply to Final URLs and Final Mobile URLs.
 - If you specify [Mobile Final Url](#mobilefinalurl), you must also specify [Final Url](#finalurl).  
 
 **Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.    
+**Update:** Optional. If no value is set for the update, this setting is not changed. If you set this field to the *delete_value* string, the prior setting is removed.    
 **Delete:** Read-only  
 
 ## <a name="modifiedtime"></a>Modified Time
@@ -365,7 +365,7 @@ The money off promotion value.
 For example, to promote "$20 off shoes - On orders over $100", set the [Promotion Target](#promotiontarget) to "shoes", set [Currency Code](#currencycode) to "USD", set [Money Amount Off](#moneyamountoff) to 20, and set [Orders Over Amount](#ordersoveramount) to 100. 
 
 **Add:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
-**Update:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
+**Update:** Optional. You can set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
 **Delete:** Read-only  
 
 ## <a name="occasion"></a>Occasion
@@ -420,7 +420,7 @@ The Scheduling can limit the promotion to a shorter timeframe within the occasio
 |<a name="yearendgift"></a>YearEndGift|The "Year-End Gift" promotion can run anytime according to your ad extension scheduling.|
 
 **Add:** Optional. If you do not specify this field or leave it empty, the default value of [None](#none) will be set.  
-**Update:** Optional. If no value is set for the update, this setting is not changed.  
+**Update:** Optional. If no value is set for the update, this setting is not changed. If you set this field, then [Promotion Start](#promotionstart) and [Promotion End](#promotionend) must also be set to retain or update the previous settings.  
 **Delete:** Read-only  
 
 ## <a name="ordersoveramount"></a>Orders Over Amount
@@ -456,7 +456,7 @@ The percent off promotion value in micros.
 For example, 10000000 represents a 10% discount.
 
 **Add:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
-**Update:** Required. You must set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both.  
+**Update:** Optional. You can set either [Money Amount Off](#moneyamountoff) or [Percent Off](#percentoff), but you cannot set both..  
 **Delete:** Read-only  
 
 ## <a name="promotioncode"></a>Promotion Code
@@ -469,21 +469,33 @@ For example, to promote "$20 off shoes - Promocode SAVE20", set the [Promotion T
 **Delete:** Read-only  
 
 ## <a name="promotionend"></a>Promotion End
-The end date that will be displayed in the ad.
+The end date helps to inform the promotion date or dates that will be displayed in the ad. 
 
-This property does not override the inherent delivery range for a promotion [Occasion](#occasion).  
+For example if the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) dates are both set to February 14th, the text "Valid Feb 14" could be included in the displayed promotion. 
 
-**Add:** Optional. If you leave this field nil or empty the promotion will not expire.  
-**Update:** Optional. If no value is set for the update, this setting is not changed. To delete the current end date and effectively set no end date, set this field to the *delete_value* string. When you retrieve the experiment next time, this field will not be set.  
+The [Promotion Start](#promotionstart) date must be earlier than, or equal to, the [Promotion End](#promotionend) date. 
+
+This property does not override the inherent delivery range for a promotion. Both the promotion [Occasion](#occasion) and Scheduling ([Ad Schedule](#adschedule), [End Date](#enddate), [Start Date](#startdate), and [Use Searcher Time Zone](#usesearchertimezone)) fields determine when the promotion is eligible to be shown in ads.  
+
+If the promotion [Occasion](#occasion) is set, then both [Promotion Start](#promotionstart) and [Promotion End](#promotionend) will be set by default to start and end dates for the corresponding promotion [Occasion](#occasion). See the table in the promotion [Occasion](#occasion) reference for details. For example if the [Occasion](#occasion) is set to [WomensDay](#womensday), then by default the service will set [Promotion Start](#promotionstart) to February 1st and [Promotion End](#promotionend) to March 31st. If the end date has already passed for the current year, then each start and end date must be set for dates during the following year.  
+
+**Add:** Optional   
+**Update:** Optional. If the promotion [Occasion](#occasion) is not set, and if the end date is not set, this setting is not changed. To delete the current end date and effectively set no end date, set this field to the *delete_value* string. When you retrieve the promotion ad extension next time, this field will not be set. However, if the promotion [Occasion](#occasion) is set, both the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) fields will be reset to the default dates for the corresponding promotion [Occasion](#occasion). In that case you can choose to set the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) fields to retain or update the previous settings.   
 **Delete:** Read-only  
 
 ## <a name="promotionstart"></a>Promotion Start
-The promotion start date that will be displayed in the ad.
+The start date helps to inform the promotion date or dates that will be displayed in the ad. 
 
-This property does not override the inherent delivery range for a promotion [Occasion](#occasion).  
+For example if the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) dates are both set to February 14th, the text "Valid Feb 14" could be included in the displayed promotion. 
 
-**Add:** Optional. If you do not set the start date, then by default the service uses today's date.  
-**Update:** Optional. If no value is set for the update, this setting is not changed.  
+The [Promotion Start](#promotionstart) date must be earlier than, or equal to, the [Promotion End](#promotionend) date. 
+
+This property does not override the inherent delivery range for a promotion. Both the promotion [Occasion](#occasion) and Scheduling ([Ad Schedule](#adschedule), [End Date](#enddate), [Start Date](#startdate), and [Use Searcher Time Zone](#usesearchertimezone)) fields determine when the promotion is eligible to be shown in ads.  
+
+If the promotion [Occasion](#occasion) is set, then both [Promotion Start](#promotionstart) and [Promotion End](#promotionend) will be set by default to start and end dates for the corresponding promotion [Occasion](#occasion). See the table in the promotion [Occasion](#occasion) reference for details. For example if the [Occasion](#occasion) is set to [WomensDay](#womensday), then by default the service will set [Promotion Start](#promotionstart) to February 1st and [Promotion End](#promotionend) to March 31st. If the end date has already passed for the current year, then each start and end date must be set for dates during the following year.  
+
+**Add:** Optional  
+**Update:** Optional. If the promotion [Occasion](#occasion) is not set, and if the end date is not set, this setting is not changed. To delete the current end date and effectively set no end date, set this field to the *delete_value* string. When you retrieve the promotion ad extension next time, this field will not be set. However, if the promotion [Occasion](#occasion) is set, both the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) fields will be reset to the default dates for the corresponding promotion [Occasion](#occasion). In that case you can choose to set the [Promotion Start](#promotionstart) and [Promotion End](#promotionend) fields to retain or update the previous settings.   
 **Delete:** Read-only  
 
 ## <a name="promotiontarget"></a>Promotion Target
@@ -492,7 +504,7 @@ The promotion target or item.
 For example, you might run a promotion for "shoes" at either $20 or 20% discount. To run a promotion for "Up to $20 off shoes", set the [Promotion Target](#promotiontarget) to "shoes", set the [Discount Modifier](#discountmodifier) to "UpTo", set [Currency Code](#currencycode) to "USD", and set [Money Amount Off](#moneyamountoff) to 20.
 
 **Add:** Required  
-**Update:** Required  
+**Update:** Optional. If no value is set for the update, this setting is not changed.  
 **Delete:** Read-only  
 
 ## <a name="startdate"></a>Start Date
@@ -527,7 +539,7 @@ The following validation rules apply to tracking templates. For more details abo
 - Microsoft Advertising does not validate whether custom parameters exist. If you use custom parameters in your tracking template and they do not exist, then the landing page URL will include the key and value placeholders of your custom parameters without substitution. For example, if your tracking template is *https://tracker.example.com/?season={_season}&promocode={_promocode}&u={lpurl}*, and neither *{_season}* or *{_promocode}* are defined at the campaign, ad group, criterion, keyword, or ad level, then the landing page URL will be the same.
 
 **Add:** Optional  
-**Update:** Optional. If no value is set for the update, the prior setting is removed.    
+**Update:** Optional. If no value is set for the update, this setting is not changed. If you set this field to the *delete_value* string, the prior setting is removed.    
 **Delete:** Read-only  
 
 ## <a name="usesearchertimezone"></a>Use Searcher Time Zone
