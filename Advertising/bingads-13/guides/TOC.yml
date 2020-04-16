@@ -1380,6 +1380,8 @@
           href: ../campaign-management-service/negativekeyword.md
         - name: NegativeKeywordList
           href: ../campaign-management-service/negativekeywordlist.md
+        - name: NegativeSite
+          href: ../campaign-management-service/negativesite.md
         - name: OfflineConversion
           href: ../campaign-management-service/offlineconversion.md
         - name: OfflineConversionGoal
@@ -1396,6 +1398,8 @@
           href: ../campaign-management-service/pagevisitorswhovisitedanotherpagerule.md
         - name: Paging
           href: ../campaign-management-service/paging.md
+        - name: PlacementExclusionList
+          href: ../campaign-management-service/placementexclusionlist.md
         - name: PriceAdExtension
           href: ../campaign-management-service/priceadextension.md
         - name: PriceTableRow

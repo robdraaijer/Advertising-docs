@@ -96,7 +96,6 @@ For an *Ad Group Negative Site* record, the following attribute fields are avail
 - [Ad Group](#adgroup)
 - [Campaign](#campaign)
 - [Client Id](#clientid)
-- [Id](#id)
 - [Modified Time](#modifiedtime)
 - [Parent Id](#parentid)
 - [Status](#status)
@@ -125,13 +124,6 @@ Used to associate records in the bulk upload file with records in the results fi
 **Add:** Optional  
 **Update:** Not applicable. A negative site can be added and deleted, but cannot be updated.    
 **Delete:** Read-only  
-
-## <a name="id"></a>Id
-The system generated identifier of the negative site.
-
-**Add:** Read-only  
-**Update:** Not applicable. A negative site can be added and deleted, but cannot be updated.  
-**Delete:** Read-only and Required  
 
 ## <a name="modifiedtime"></a>Modified Time
 The date and time that the entity was last updated. The value is in Coordinated Universal Time (UTC).

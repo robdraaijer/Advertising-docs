@@ -15,6 +15,13 @@ Defines an object that contains association information for a campaign and share
   <xs:sequence>
     <xs:element name="EntityId" type="xs:long" />
     <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SharedEntityCustomerId" nillable="true" type="xs:long">
+      <xs:annotation>
+        <xs:appinfo>
+          <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:element>
     <xs:element name="SharedEntityId" type="xs:long" />
     <xs:element minOccurs="0" name="SharedEntityType" nillable="true" type="xs:string" />
   </xs:sequence>
@@ -27,6 +34,7 @@ Defines an object that contains association information for a campaign and share
 |-----------|---------------|-------------|
 |<a name="entityid"></a>EntityId|The system-generated identifier of the campaign that is associated with the shared entity.|**long**|
 |<a name="entitytype"></a>EntityType|The type of entity.<br/><br/>Currently the only supported value is Campaign.|**string**|
+|<a name="sharedentitycustomerid"></a>SharedEntityCustomerId|Reserved.|**long**|
 |<a name="sharedentityid"></a>SharedEntityId|The system-generated identifier of the shared entity.|**long**|
 |<a name="sharedentitytype"></a>SharedEntityType|The type of the shared entity.<br/><br/>Currently the only supported value is NegativeKeywordList.|**string**|
 
