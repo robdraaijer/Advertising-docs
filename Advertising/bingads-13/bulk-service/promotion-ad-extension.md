@@ -501,7 +501,9 @@ If the promotion [Occasion](#occasion) is set, then both [Promotion Start](#prom
 ## <a name="promotiontarget"></a>Promotion Target
 The promotion target or item.
 
-For example, you might run a promotion for "shoes" at either $20 or 20% discount. To run a promotion for "Up to $20 off shoes", set the [Promotion Target](#promotiontarget) to "shoes", set the [Discount Modifier](#discountmodifier) to "UpTo", set [Currency Code](#currencycode) to "USD", and set [Money Amount Off](#moneyamountoff) to 20.
+For example, you might run a promotion for "shoes" at either $20 or 20% discount. To run a promotion for "Up to $20 off shoes", set the [Promotion Target](#promotiontarget) to "shoes", set the [Discount Modifier](#discountmodifier) to "UpTo", set [Currency Code](#currencycode) to "USD", and set [Money Amount Off](#moneyamountoff) to 20. 
+
+The string can contain a maximum of 20 characters. 
 
 **Add:** Required  
 **Update:** Optional. If no value is set for the update, this setting is not changed.  

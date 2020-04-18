@@ -120,25 +120,25 @@ The following attribute and impression share performance statistics columns are 
 
 |Attributes|Impression Share Performance Statistics|
 |--------------|-------------------------------------------|
-|BidMatchType<br/><br/>DeviceOS<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>ClickSharePercent<br/><br/>ExactMatchImpressionSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankAggPercent<br/><br/>ImpressionSharePercent|
+|BidMatchType<br/><br/>DeviceOS<br/><br/>Goal<br/><br/>GoalType<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>AudienceImpressionLostToBudgetPercent<br/><br/>AudienceImpressionLostToRankPercent<br/><br/>AudienceImpressionSharePercent<br/><br/>ClickSharePercent<br/><br/>ExactMatchImpressionSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankAggPercent<br/><br/>ImpressionSharePercent|
 
 The following attribute and impression share performance statistics columns are mutually exclusive when submitting the [CampaignPerformanceReportRequest](../reporting-service/campaignperformancereportrequest.md).
 
 |Attributes|Impression Share Performance Statistics|
 |--------------|-------------------------------------------|
-|BidMatchType<br/><br/>BudgetAssociationStatus<br/><br/>BudgetName<br/><br/>BudgetStatus<br/><br/>DeviceOS<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>ClickSharePercent<br/><br/>ExactMatchImpressionSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankAggPercent<br/><br/>ImpressionSharePercent|
+|BidMatchType<br/><br/>BudgetAssociationStatus<br/><br/>BudgetName<br/><br/>BudgetStatus<br/><br/>DeviceOS<br/><br/>Goal<br/><br/>GoalType<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>AudienceImpressionLostToBudgetPercent<br/><br/>AudienceImpressionLostToRankPercent<br/><br/>AudienceImpressionSharePercent<br/><br/>ClickSharePercent<br/><br/>ExactMatchImpressionSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankAggPercent<br/><br/>ImpressionSharePercent|
 
 The following attribute and impression share performance statistics columns are mutually exclusive when submitting the [ProductDimensionPerformanceReportRequest](../reporting-service/productdimensionperformancereportrequest.md).
 
 |Attributes|Impression Share Performance Statistics|
 |--------------|-------------------------------------------|
-|AdDistribution<br/><br/>AdId<br/><br/>AdStatus<br/><br/>ClickType<br/><br/>ClickTypeId<br/><br/>Language<br/><br/>LocalStoreCode<br/><br/>Network<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>BenchmarkBid<br/><br/>BenchmarkCtr<br/><br/>ClickSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankPercent<br/><br/>ImpressionSharePercent|
+|AdDistribution<br/><br/>AdId<br/><br/>AdStatus<br/><br/>ClickType<br/><br/>ClickTypeId<br/><br/>Goal<br/><br/>GoalType<br/><br/>Language<br/><br/>LocalStoreCode<br/><br/>Network<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>BenchmarkBid<br/><br/>BenchmarkCtr<br/><br/>ClickSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankPercent<br/><br/>ImpressionSharePercent|
 	
 The following attribute and impression share performance statistics columns are mutually exclusive when submitting the [ProductPartitionPerformanceReportRequest](../reporting-service/productpartitionperformancereportrequest.md).
 
 |Attributes|Impression Share Performance Statistics|
 |--------------|-------------------------------------------|
-|AdDistribution<br/><br/>AdId<br/><br/>AdStatus<br/><br/>BidMatchType<br/><br/>ClickType<br/><br/>ClickTypeId<br/><br/>DeliveredMatchType<br/><br/>Language<br/><br/>LocalStoreCode<br/><br/>Network<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>BenchmarkBid<br/><br/>BenchmarkCtr<br/><br/>ClickSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankPercent<br/><br/>ImpressionSharePercent|
+|AdDistribution<br/><br/>AdId<br/><br/>AdStatus<br/><br/>BidMatchType<br/><br/>ClickType<br/><br/>ClickTypeId<br/><br/>DeliveredMatchType<br/><br/>Goal<br/><br/>GoalType<br/><br/>Language<br/><br/>LocalStoreCode<br/><br/>Network<br/><br/>TopVsOther|AbsoluteTopImpressionSharePercent<br/><br/>BenchmarkBid<br/><br/>BenchmarkCtr<br/><br/>ClickSharePercent<br/><br/>ImpressionLostToBudgetPercent<br/><br/>ImpressionLostToRankPercent<br/><br/>ImpressionSharePercent|
 
 ## <a name="timeperiod"></a>Time Period Column
 If you include the *TimePeriod* column, then the format of the values in the downloaded report will vary depending on the aggregation level that you specify in the report request. For example, if the aggregation level is Daily, each field in TimePeriod column will contain the day formatted as *yyyy-mm-dd*.

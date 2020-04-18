@@ -17,6 +17,7 @@ Do not try to instantiate an *AdExtension*. You can create one or more following
 - [ImageAdExtension](imageadextension.md)
 - [LocationAdExtension](locationadextension.md)
 - [PriceAdExtension](priceadextension.md)
+- [PromotionAdExtension](promotionadextension.md)
 - [ReviewAdExtension](reviewadextension.md)
 - [SitelinkAdExtension](sitelinkadextension.md)
 - [StructuredSnippetAdExtension](structuredsnippetadextension.md)

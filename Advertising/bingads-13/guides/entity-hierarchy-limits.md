@@ -50,6 +50,7 @@ The entity (account, campaign, or ad group) to ad extension association limit va
 |[Image Ad Extension](#imageadextension)|6|
 |[Location Ad Extension](#locationadextension)|Up to the total number of location ad extensions in your account|
 |[Price Ad Extension](#priceadextension)|20|
+|[Promotion Ad Extension](#promotionadextension)|20|
 |[Review Ad Extension](#reviewadextension)|20|
 |[Sitelink Ad Extension](#sitelinkadextension)|20|
 |[Structured Snippet Ad Extension](#structuredsnippetadextension)|20|
@@ -121,6 +122,15 @@ The following table defines limits for price ad extension properties.
 |Property|Limit|
 |------------|---------|
 |Table Rows|You must have between 3 and 8 price table rows.|
+
+### <a name="promotionadextension"></a>Promotion Ad Extensions
+You can manage promotion ad extensions using the Bulk service ([Promotion Ad Extension Record](../bulk-service/promotion-ad-extension.md)) or Campaign Management service ([PromotionAdExtension](../campaign-management-service/promotionadextension.md)).
+
+The following table defines limits for promotion ad extension properties.
+
+|Property|Limit|
+|------------|---------|
+|PromotionTarget|The string can contain a maximum of 20 characters.|
 
 ### <a name="reviewadextension"></a>Review Ad Extensions
 You can manage review ad extensions using the Bulk service ([Review Ad Extension Record](../bulk-service/review-ad-extension.md)) or Campaign Management service ([ReviewAdExtension](../campaign-management-service/reviewadextension.md)).
@@ -424,7 +434,7 @@ Product groups are used to determine which products from your Microsoft Merchant
 
 After you create a shopping campaign, Microsoft Advertising creates a default ad group. That ad group includes a product group containing all of the products in your Microsoft Merchant Center catalog feed. However, you don't typically want an ad group to contain all products. Instead, you likely want each ad group to contain only very closely related products in order more effectively manage which ads show, and when. With product groups you can narrow down that default group to a customized list of specific products.
 
-There is a 1 to 1 relationship between ad groups and product groups. In other words, each ad group has one product group and vice versa.
+There is a 1 to 1 relationship between ad groups and product groups. In other words, each ad group has one product group and vice versa. Within a product group you can subdivide products e.g., by category into product partitions. The entire product partition tree node count for an ad group cannot exceed 20,000.
 
 You can manage product groups using the Bulk service ([Ad Group Product Partition](../bulk-service/ad-group-product-partition.md)) or Campaign Management service ([ProductPartition](../campaign-management-service/productpartition.md)).
 
