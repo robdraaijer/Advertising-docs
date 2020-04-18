@@ -26,7 +26,7 @@ You can manage ad extensions with either the [Bulk Service](../bulk-service/bulk
 ## <a name="adextensiontypes"></a>Ad Extension Types
 Ad extension types include [Action Extensions](#actionextensions), [App Extensions](#appextensions), [Call Extensions](#callextensions), [Callout Extensions](#calloutextensions), [Image Extensions](#imageextensions), [Location Extensions](#locationextensions), [Price Extensions](#priceextensions), [Promotion Extensions](#promotionextensions), [Review Extensions](#reviewextensions), [Sitelink Extensions](#sitelinkextensions), and [Structured Snippet Extensions](#structuredsnippetextensions). 
 
-### <a name="appextensions"></a>Action Extensions
+### <a name="actionextensions"></a>Action Extensions
 With Action Extensions, your ads will include with a call-to-action button.
 
 ### <a name="appextensions"></a>App Extensions
