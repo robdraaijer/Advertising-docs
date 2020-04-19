@@ -130,6 +130,7 @@ The following table defines limits for promotion ad extension properties.
 
 |Property|Limit|
 |------------|---------|
+|PromotionCode|The string can contain a maximum of 15 characters.|
 |PromotionTarget|The string can contain a maximum of 20 characters.|
 
 ### <a name="reviewadextension"></a>Review Ad Extensions

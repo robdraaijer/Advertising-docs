@@ -7,7 +7,9 @@ ms.author: eur
 description: Defines a negative keyword with match type.
 ---
 # NegativeKeyword Data Object - Campaign Management
-Defines a negative keyword with match type. A negative keyword can be added and deleted, but cannot be updated.
+Defines a negative keyword with match type. 
+
+A negative keyword can be added and deleted, but cannot be updated.
 
 You may choose to assign negative keywords to an individual campaign or ad group. An assigned set of negative keywords cannot be shared with other campaigns or ad groups.
 
@@ -16,7 +18,7 @@ Negative keywords can also be added and deleted from a shared negative keyword l
 > [!NOTE]
 > The same negative keyword and match type can be added to all campaigns, ad groups, and negative keyword lists if you choose. Each instance must be added and associated individually and would be assigned a unique negative keyword identifier.
 
-For more information about managing negative keywords and negative keyword lists, please see the technical guide about [Negative Keywords](https://go.microsoft.com/fwlink/?LinkID=691225).
+For more information about managing negative keywords and negative keyword lists, see the [Negative Keywords](../guides/negative-keywords.md) technical guide. 
 
 ## Syntax
 ```xml
@@ -39,7 +41,7 @@ For more information about managing negative keywords and negative keyword lists
 |-----------|---------------|-------------|
 |<a name="id"></a>Id|The unique Microsoft Advertising identifier of the negative keyword.<br/><br/>**Add:** Read-only<br/>**Delete:** Required|**long**|
 |<a name="matchtype"></a>MatchType|The type of match to compare the negative keyword and the user's search term.<br/><br/>The supported values for a negative keyword are Exact and Phrase.<br/><br/>**Add:** Required<br/>**Delete:** Optional|[MatchType](matchtype.md)|
-|<a name="text"></a>Text|The negative keyword text. The text can contain a maximum of 100 characters.<br/><br/>**Add:** Required<br/>**Delete:** Optional|**string**|
+|<a name="text"></a>Text|The negative keyword text.<br/><br/>The text can contain a maximum of 100 characters.<br/><br/>**Add:** Required<br/>**Delete:** Optional|**string**|
 
 The [NegativeKeyword](negativekeyword.md) object has [Inherited Elements](#inheritedelements).
 

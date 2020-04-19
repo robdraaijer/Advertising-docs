@@ -12,7 +12,9 @@ dev_langs:
   - python
 ---
 # SetNegativeSitesToAdGroups Service Operation - Campaign Management
-Sets the negative site URLs of the specified ad groups.
+Sets the negative site URLs of the specified ad groups. 
+
+Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level. If you associate any [website exclusion lists](placementexclusionlist.md) with an ad account, the list of [negative sites](negativesite.md) are used in addition to the [campaign negative sites](campaignnegativesites.md) or [ad group negative sites](adgroupnegativesites.md). 
 
 ## <a name="request"></a>Request Elements
 The *SetNegativeSitesToAdGroupsRequest* object defines the [body](#request-body) and [header](#request-header) elements of the service operation request. The elements must be in the same order as shown in the [Request SOAP](#request-soap). 

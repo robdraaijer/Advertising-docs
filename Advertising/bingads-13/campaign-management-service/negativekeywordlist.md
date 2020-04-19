@@ -7,7 +7,7 @@ ms.author: eur
 description: Defines a negative keyword list.
 ---
 # NegativeKeywordList Data Object - Campaign Management
-Defines a negative keyword list. You can add negative keywords to a negative keyword list and associate the list with one or more campaigns.
+Defines a negative keyword list. You can add negative keywords to a negative keyword list and associate the list with campaigns.
 
 ## Syntax
 ```xml

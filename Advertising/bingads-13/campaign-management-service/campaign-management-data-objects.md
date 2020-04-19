@@ -118,7 +118,7 @@ The Campaign Management service defines the following data objects.
 |[NegativeCampaignCriterion](negativecampaigncriterion.md)|Defines a criterion that you want to exclude from the specified campaign.|
 |[NegativeKeyword](negativekeyword.md)|Defines a negative keyword with match type.|
 |[NegativeKeywordList](negativekeywordlist.md)|Defines a negative keyword list.|
-|[NegativeSite](negativesite.md)|Reserved.|
+|[NegativeSite](negativesite.md)|Defines a website URL where you do not want your ads displayed.|
 |[OfflineConversion](offlineconversion.md)|Defines an offline conversion that you send to Microsoft Advertising.|
 |[OfflineConversionGoal](offlineconversiongoal.md)|Defines an offline conversion goal.|
 |[OperationError](operationerror.md)|Defines an error object that contains the details that explain why the service operation failed.|
@@ -127,7 +127,7 @@ The Campaign Management service defines the following data objects.
 |[PageVisitorsWhoDidNotVisitAnotherPageRule](pagevisitorswhodidnotvisitanotherpagerule.md)|Defines a page visitors who did not visit another page remarketing rule.|
 |[PageVisitorsWhoVisitedAnotherPageRule](pagevisitorswhovisitedanotherpagerule.md)|Defines a page visitors who visited another page remarketing rule.|
 |[Paging](paging.md)|Defines a paging object that you can use to request objects in batches.|
-|[PlacementExclusionList](placementexclusionlist.md)|Reserved.|
+|[PlacementExclusionList](placementexclusionlist.md)|Defines a website exclusion list in the manager account (customer) shared library.|
 |[PriceAdExtension](priceadextension.md)|Defines an ad extension that includes between 3 and 8 price table rows.|
 |[PriceTableRow](pricetablerow.md)|Defines pricing information by currency and unit that you can use with price ad extensions.|
 |[ProductAd](productad.md)|Defines a product ad.|

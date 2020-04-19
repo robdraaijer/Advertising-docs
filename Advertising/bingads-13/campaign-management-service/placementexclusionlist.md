@@ -4,10 +4,17 @@ ms.service: bing-ads-campaign-management-service
 ms.topic: article
 author: eric-urban
 ms.author: eur
-description: Reserved.
+description: Defines a website exclusion list in the manager account (customer) shared library.
 ---
 # PlacementExclusionList Data Object - Campaign Management
-Reserved.
+Defines a website exclusion list in the manager account (customer) shared library. You can add negative sites to a website exclusion list and associate the list with ad accounts. 
+
+> [!NOTE] 
+> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). 
+
+If you associate any [website exclusion lists](placementexclusionlist.md) with an ad account, the list of [negative sites](negativesite.md) are used in addition to the [campaign negative sites](campaignnegativesites.md) or [ad group negative sites](adgroupnegativesites.md). Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level.  
+
+For more information about managing negative sites and website exclusion lists, see the [Negative Sites](../guides/negative-sites.md) technical guide. 
 
 ## Syntax
 ```xml
@@ -31,7 +38,7 @@ The [PlacementExclusionList](placementexclusionlist.md) object derives from the 
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="itemcount"></a>ItemCount|Reserved.|**int**|
+|<a name="itemcount"></a>ItemCount|The number of [SharedListItem](sharedlistitem.md) objects that are added to this shared list.<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**int**|
 
 ## <a name="inheritedelements"></a>Inherited Elements
 
@@ -40,10 +47,10 @@ The [PlacementExclusionList](placementexclusionlist.md) object derives from the 
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="associationcount"></a>AssociationCount|The number of active associations between this object and an entity such as a campaign.<br/><br/>For a [NegativeKeywordList](negativekeywordlist.md), the maximum association count is 20.<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**int**|
+|<a name="associationcount"></a>AssociationCount|The number of active associations between this object and an entity such as a campaign.<br/><br/>For a [PlacementExclusionList](placementexclusionlist.md), the maximum association count is 20.<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**int**|
 |<a name="forwardcompatibilitymap"></a>ForwardCompatibilityMap|The list of key and value strings for forward compatibility to avoid otherwise breaking changes when new elements are added in the current API version.<br/><br/>Forward compatibility changes will be noted here in future releases. There are currently no forward compatibility changes for the *SharedEntity* object.|[KeyValuePairOfstringstring](keyvaluepairofstringstring.md) array|
 |<a name="id"></a>Id|The unique Microsoft Advertising identifier of the shared entity.<br/><br/>**Add:** Read-only<br/>**Update:** Required|**long**|
-|<a name="name"></a>Name|The name of the shared entity.<br/><br/>For a [NegativeKeywordList](negativekeywordlist.md), the maximum length is 255.<br/><br/>**Add:** Optional<br/>**Update:** Optional|**string**|
+|<a name="name"></a>Name|The name of the shared entity.<br/><br/>For a [PlacementExclusionList](placementexclusionlist.md), the maximum length is 255.<br/><br/>**Add:** Optional<br/>**Update:** Optional|**string**|
 |<a name="type"></a>Type|The type of the shared entity. For more information about shared entity types, see [SharedEntity Data Object Remarks](sharedentity.md#remarks).<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**string**|
 
 ## Requirements

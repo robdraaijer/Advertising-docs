@@ -464,6 +464,8 @@ The promotion code appended to the promotion target.
 
 For example, to promote "$20 off shoes - Promocode SAVE20", set the [Promotion Target](#promotiontarget) to "shoes", set [Currency Code](#currencycode) to "USD", set [Money Amount Off](#moneyamountoff) to 20, and set [Promotion Code](#promotioncode) to "SAVE20".
 
+The string can contain a maximum of 15 characters. 
+
 **Add:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode).  
 **Update:** Optional. You cannot set both [Orders Over Amount](#ordersoveramount) and [Promotion Code](#promotioncode). If no value is set for the update, this setting is not changed. If you set this field to to the *delete_value* string, the previous setting will be deleted.  
 **Delete:** Read-only  
