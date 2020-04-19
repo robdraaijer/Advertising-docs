@@ -11,7 +11,7 @@ A *negative site* is a website URL where you do not want your ads displayed.
 
 A negative site can be added and deleted from a [PlacementExclusionList](../campaign-management-service/placementexclusionlist.md) (website exclusion list), but cannot be updated. 
 
-If you associate any [website exclusion lists](../campaign-management-service/placementexclusionlist.md) with an ad account, the list of [negative sites](negativesite.md) are used in addition to the [campaign negative sites](../campaign-management-service/campaignnegativesites.md) or [ad group negative sites](../campaign-management-service/adgroupnegativesites.md). Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level.  
+If you associate any [website exclusion lists](../campaign-management-service/placementexclusionlist.md) with an ad account, the list of [negative sites](../campaign-management-service/negativesite.md) are used in addition to the [campaign negative sites](../campaign-management-service/campaignnegativesites.md) or [ad group negative sites](../campaign-management-service/adgroupnegativesites.md). Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level.  
 
 > [!NOTE] 
 > Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). 
