@@ -14,7 +14,7 @@ A negative site can be added and deleted from a [PlacementExclusionList](../camp
 If you associate any [website exclusion lists](../campaign-management-service/placementexclusionlist.md) with an ad account, the list of [negative sites](../campaign-management-service/negativesite.md) are used in addition to the [campaign negative sites](../campaign-management-service/campaignnegativesites.md) or [ad group negative sites](../campaign-management-service/adgroupnegativesites.md). Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level.  
 
 > [!NOTE] 
-> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). 
+> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). You can only view website exclusion lists in the redesigned Microsoft Advertising UI i.e., via Tools -> Shared Library -> Website exclusion lists. If you don't see it, look for the "Try the new Microsoft Advertising" prompt when you sign in.  
 
 For negative site limits per entity, please see [Negative Sites](entity-hierarchy-limits.md#negativesites).
 

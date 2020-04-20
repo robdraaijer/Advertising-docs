@@ -40,7 +40,7 @@ With the Campaign Management API use the [PromotionAdExtension](../campaign-mana
 ### <a name="placementexclusionlist-april2020"></a>Placement Exclusion List
 
 > [!NOTE] 
-> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). 
+> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). You can only view website exclusion lists in the redesigned Microsoft Advertising UI i.e., via Tools -> Shared Library -> Website exclusion lists. If you don't see it, look for the "Try the new Microsoft Advertising" prompt when you sign in.  
 
 ### <a name="audiencenetworksov-april2020"></a>Impression Share for Microsoft Audience Network
 
