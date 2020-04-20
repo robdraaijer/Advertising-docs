@@ -16,8 +16,6 @@ Updates the status of the specified client links.
 
 > [!NOTE]
 > Only a user with Super Admin or Standard credentials can add, update, and search for client links to advertiser accounts. Only a user with Super Admin credentials can add, update, and search for client links to customers. For more information, see the [User Roles](../guides/account-hierarchy-permissions.md#user-roles) technical guide.  
-> 
-> Client links from customer to customer are only available for pilot customers where [GetCustomerPilotFeatures](getcustomerpilotfeatures.md) returns feature identifier 449. 
 
 If your user is within an agency, then the operation may be used to update the client link status of any account that you manage or have invited to manage. 
 
