@@ -49,7 +49,7 @@ The [NegativeSite](negativesite.md) object derives from the [SharedListItem](sha
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
 |<a name="forwardcompatibilitymap"></a>ForwardCompatibilityMap|The list of key and value strings for forward compatibility to avoid otherwise breaking changes when new elements are added in the current API version.<br/><br/>Forward compatibility changes will be noted here in future releases. There are currently no forward compatibility changes for this object.|[KeyValuePairOfstringstring](keyvaluepairofstringstring.md) array|
-|<a name="type"></a>Type|The type of the shared list item.  This value is *NegativeSite* when you retrieve a negative site. For more information about shared list item types, see [SharedListItem Data Object Remarks](sharedlistitem.md#remarks).<br/><br/>**Add:** Read-only<br/>**Delete:** Read-only|**string**|
+|<a name="type"></a>Type|The type of the shared list item. This value is *NegativeSite* when you retrieve a negative site. For more information about shared list item types, see [SharedListItem Data Object Remarks](sharedlistitem.md#remarks).<br/><br/>**Add:** Read-only<br/>**Delete:** Read-only|**string**|
 
 ## Requirements
 Service: [CampaignManagementService.svc v13](https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/CampaignManagementService.svc)  

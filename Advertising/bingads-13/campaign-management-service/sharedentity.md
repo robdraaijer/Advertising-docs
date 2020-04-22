@@ -32,11 +32,11 @@ The [NegativeKeywordList](negativekeywordlist.md) and [PlacementExclusionList](p
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="associationcount"></a>AssociationCount|The number of active associations between this shared entity and an entity such as a campaign or ad account.|**int**|
+|<a name="associationcount"></a>AssociationCount|The number of active associations between the negative keyword list and campaign.<br/><br/>For a [NegativeKeywordList](negativekeywordlist.md), the maximum number of active associations between the negative keyword list and campaign is 20.<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**int**|
 |<a name="forwardcompatibilitymap"></a>ForwardCompatibilityMap|The list of key and value strings for forward compatibility to avoid otherwise breaking changes when new elements are added in the current API version.<br/><br/>Forward compatibility changes will be noted here in future releases. There are currently no forward compatibility changes for this object.|[KeyValuePairOfstringstring](keyvaluepairofstringstring.md) array|
-|<a name="id"></a>Id|The unique Microsoft Advertising identifier of the shared entity.|**long**|
-|<a name="name"></a>Name|The name of the shared entity.|**string**|
-|<a name="type"></a>Type|The type of the shared entity.<br/><br/>For more information about shared entity types, see [SharedEntity Data Object Remarks](sharedentity.md#remarks).|**string**|
+|<a name="id"></a>Id|The unique Microsoft Advertising identifier of the shared entity.<br/><br/>**Add:** Read-only<br/>**Update:** Required|**long**|
+|<a name="name"></a>Name|The name of the shared entity.<br/><br/>The maximum string length is 255.<br/><br/>**Add:** Optional<br/>**Update:** Optional|**string**|
+|<a name="type"></a>Type|The type of the shared entity.<br/><br/>This value is *NegativeKeywordList* when you retrieve a [NegativeKeywordList](negativekeywordlist.md).<br/><br/>For more information about shared entity types, see [SharedEntity Data Object Remarks](sharedentity.md#remarks).<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**string**|
 
 ## <a name="remarks"></a>Remarks
 For Java and the .NET languages, do not set the *Type* element because the value is determined by the object instance.
