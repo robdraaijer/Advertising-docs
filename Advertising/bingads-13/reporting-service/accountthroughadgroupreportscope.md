@@ -24,9 +24,9 @@ Defines the set of accounts, campaigns, and ad groups to include in the report.
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="accountids"></a>AccountIds|A list of up to 1,000 account identifiers to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include one of these elements.|**long** array|
-|<a name="adgroups"></a>AdGroups|A list of up to 300 ad groups to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include one of these elements.|[AdGroupReportScope](adgroupreportscope.md) array|
-|<a name="campaigns"></a>Campaigns|A list of up to 300 campaigns to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include one of these elements.|[CampaignReportScope](campaignreportscope.md) array|
+|<a name="accountids"></a>AccountIds|A list of up to 1,000 account identifiers to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include at least one of these elements.|**long** array|
+|<a name="adgroups"></a>AdGroups|A list of up to 300 ad groups to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include at least one of these elements.|[AdGroupReportScope](adgroupreportscope.md) array|
+|<a name="campaigns"></a>Campaigns|A list of up to 300 campaigns to include in the report.<br/><br/>The report scope includes a union of the [AccountIds](#accountids), [AdGroups](#adgroups), and [Campaigns](#campaigns) elements. You must include at least one of these elements.|[CampaignReportScope](campaignreportscope.md) array|
 
 ## Requirements
 Service: [ReportingService.svc v13](https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc)  
