@@ -10,7 +10,7 @@ description: Defines a customer or account that can use the shared audience or U
 Defines a customer or account that can use the shared audience or UET tag.
 
 > [!TIP]
-> For an overview of sharing audiences and UET tags in a customer [hierarchy](../guides/account-hierarchy-permissions.md#account-hierarchy), see the [Share Audiences and UET Tags](../guides/universal-event-tracking.md#hierarchy-share) technical guide. 
+> For an overview of sharing audiences and UET tags in an [account hierarchy](../guides/account-hierarchy-permissions.md#account-hierarchy), see the [Share Audiences and UET Tags](../guides/universal-event-tracking.md#hierarchy-share) technical guide. 
 
 ## Syntax
 ```xml

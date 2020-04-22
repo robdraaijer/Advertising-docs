@@ -7,10 +7,14 @@ ms.author: eur
 description: Defines a website exclusion list in the manager account (customer) shared library.
 ---
 # PlacementExclusionList Data Object - Campaign Management
-Defines a website exclusion list in the manager account (customer) shared library. You can add negative sites to a website exclusion list and associate the list with ad accounts. 
+Defines a website exclusion list in the manager account (customer) shared library. 
 
 > [!NOTE] 
 > Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). You can only view website exclusion lists in the redesigned Microsoft Advertising UI i.e., via Tools -> Shared Library -> Website exclusion lists. If you don't see it, look for the "Try the new Microsoft Advertising" prompt when you sign in.  
+
+A manager account can own up to three website exclusion lists. Each list can contain up to 10,000 negative sites. 
+
+A list can be associated with ad accounts owned by the manager account, or linked in the [account hierarchy](../guides/account-hierarchy-permissions.md#account-hierarchy) under the manager account that owns the list. A list cannot be shared above our outside of the account hierarchy. 
 
 If you associate any [website exclusion lists](placementexclusionlist.md) with an ad account, the list of [negative sites](negativesite.md) are used in addition to the [campaign negative sites](campaignnegativesites.md) or [ad group negative sites](adgroupnegativesites.md). Negative site URLs specified at the ad group level are used instead of any negative site URLs specified at the campaign level.  
 
@@ -48,7 +52,7 @@ The [PlacementExclusionList](placementexclusionlist.md) object derives from the 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
 |<a name="associationcount"></a>AssociationCount|The number of active associations between this object and an entity such as a campaign.<br/><br/>For a [PlacementExclusionList](placementexclusionlist.md), the maximum association count is 20.<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**int**|
-|<a name="forwardcompatibilitymap"></a>ForwardCompatibilityMap|The list of key and value strings for forward compatibility to avoid otherwise breaking changes when new elements are added in the current API version.<br/><br/>Forward compatibility changes will be noted here in future releases. There are currently no forward compatibility changes for the *SharedEntity* object.|[KeyValuePairOfstringstring](keyvaluepairofstringstring.md) array|
+|<a name="forwardcompatibilitymap"></a>ForwardCompatibilityMap|The list of key and value strings for forward compatibility to avoid otherwise breaking changes when new elements are added in the current API version.<br/><br/>Forward compatibility changes will be noted here in future releases. There are currently no forward compatibility changes for this object.|[KeyValuePairOfstringstring](keyvaluepairofstringstring.md) array|
 |<a name="id"></a>Id|The unique Microsoft Advertising identifier of the shared entity.<br/><br/>**Add:** Read-only<br/>**Update:** Required|**long**|
 |<a name="name"></a>Name|The name of the shared entity.<br/><br/>For a [PlacementExclusionList](placementexclusionlist.md), the maximum length is 255.<br/><br/>**Add:** Optional<br/>**Update:** Optional|**string**|
 |<a name="type"></a>Type|The type of the shared entity. For more information about shared entity types, see [SharedEntity Data Object Remarks](sharedentity.md#remarks).<br/><br/>**Add:** Read-only<br/>**Update:** Read-only|**string**|

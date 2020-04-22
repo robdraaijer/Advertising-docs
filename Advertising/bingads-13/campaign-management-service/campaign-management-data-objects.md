@@ -148,7 +148,7 @@ The Campaign Management service defines the following data objects.
 |[Schedule](schedule.md)|Defines the start and end date ranges for ad extension scheduling.|
 |[Setting](setting.md)|Defines the base class of a setting.|
 |[SharedEntity](sharedentity.md)|Defines the base class of a shared entity.|
-|[SharedEntityAssociation](sharedentityassociation.md)|Defines an object that contains association information for a campaign and shared entity such as a negative keyword list.|
+|[SharedEntityAssociation](sharedentityassociation.md)|Defines an object that associates a campaign to negative keyword list, or an ad account to a website exclusion list.|
 |[SharedList](sharedlist.md)|Defines the base class of a shared list.|
 |[SharedListItem](sharedlistitem.md)|Defines the base class of a shared list item.|
 |[ShoppingSetting](shoppingsetting.md)|Defines the campaign level settings to leverage your Microsoft Merchant Center store.|

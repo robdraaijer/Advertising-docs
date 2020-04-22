@@ -88,9 +88,9 @@ The Campaign Management service defines the following service operations.
 |[GetNegativeSitesByAdGroupIds](getnegativesitesbyadgroupids.md)|Gets the negative site URLs of the specified ad groups.|15 *AdGroupIds*<br/><br/>1 *CampaignId*|
 |[GetNegativeSitesByCampaignIds](getnegativesitesbycampaignids.md)|Gets the negative site URLs of the specified campaigns.|1 *AccountId*<br/><br/>15 *CampaignIds*|
 |[GetProfileDataFileUrl](getprofiledatafileurl.md)|Gets a temporary URL that you can use to download industry or job function profile data.|1 *ProfileType*|
-|[GetSharedEntitiesByAccountId](getsharedentitiesbyaccountid.md)|Gets the negative keyword lists from the account's library.|Not applicable.|
-|[GetSharedEntityAssociationsByEntityIds](getsharedentityassociationsbyentityids.md)|Gets negative keyword list associations for the specified campaigns.|100 *EntityIds*|
-|[GetSharedEntityAssociationsBySharedEntityIds](getsharedentityassociationsbysharedentityids.md)|Gets shared entity associations for the specified negative keyword lists.|1 *SharedEntityIds*|
+|[GetSharedEntitiesByAccountId](getsharedentitiesbyaccountid.md)|Gets the negative keyword lists or website exclusion lists.|Not applicable.|
+|[GetSharedEntityAssociationsByEntityIds](getsharedentityassociationsbyentityids.md)|Gets the negative keyword list or website exclusion list associations by campaign or account IDs.|100 *EntityIds*|
+|[GetSharedEntityAssociationsBySharedEntityIds](getsharedentityassociationsbysharedentityids.md)|Gets the negative keyword list or website exclusion list associations by shared entity IDs.|1 *SharedEntityIds*|
 |[GetUetTagsByIds](getuettagsbyids.md)|Gets the specified Universal Event Tracking (UET) tags.|100 *TagIds*|
 |[SearchCompanies](searchcompanies.md)|Search for profile data by company name.|1 *CompanyNameFilter*|
 |[SetAccountProperties](setaccountproperties.md)|Sets account level properties by name.|Not applicable|

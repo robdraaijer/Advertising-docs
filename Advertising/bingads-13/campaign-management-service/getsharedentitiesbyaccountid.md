@@ -4,7 +4,7 @@ ms.service: bing-ads-campaign-management-service
 ms.topic: article
 author: eric-urban
 ms.author: eur
-description: Gets the negative keyword lists from the account's library.
+description: Gets the negative keyword lists or website exclusion lists.
 dev_langs: 
   - csharp
   - java
@@ -12,7 +12,10 @@ dev_langs:
   - python
 ---
 # GetSharedEntitiesByAccountId Service Operation - Campaign Management
-Gets the negative keyword lists from the account's library.
+Gets the negative keyword lists or website exclusion lists. 
+
+> [!IMPORTANT]
+> The CustomerId [request header](#request-header) element must be set to the identifier of the manager account (customer) that owns the website exclusion lists. The operation will only return website exclusion lists that are owned by the manager account (customer) set in the CustomerId [request header](#request-header) element. If you have access to multiple manager accounts in an account hierarchy, the operation will return different results depending on the CustomerId scope that you set. 
 
 ## <a name="request"></a>Request Elements
 The *GetSharedEntitiesByAccountIdRequest* object defines the [body](#request-body) and [header](#request-header) elements of the service operation request. The elements must be in the same order as shown in the [Request SOAP](#request-soap). 
@@ -24,7 +27,7 @@ The *GetSharedEntitiesByAccountIdRequest* object defines the [body](#request-bod
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="sharedentitytype"></a>SharedEntityType|The type of shared entity to get from the account's library.<br/><br/>Currently the only supported value is NegativeKeywordList.|**string**|
+|<a name="sharedentitytype"></a>SharedEntityType|The type of shared entity to get from the account's library.<br/><br/>Set this element to NegativeKeywordList to get negative keyword lists in your ad account shared library.<br/><br/>Set this element to PlacementExclusionList to get website exclusion lists in your manager account (customer) shared library.|**string**|
 
 ### <a name="request-header"></a>Request Header Elements
 [!INCLUDE[request-header](./includes/request-header.md)]
@@ -36,7 +39,7 @@ The *GetSharedEntitiesByAccountIdResponse* object defines the [body](#response-b
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="sharedentities"></a>SharedEntities|The shared entities from the account's shared library, for example negative keyword lists.|[SharedEntity](sharedentity.md) array|
+|<a name="sharedentities"></a>SharedEntities|The negative keyword lists or website exclusion lists from the shared library.|[SharedEntity](sharedentity.md) array|
 
 ### <a name="response-header"></a>Response Header Elements
 [!INCLUDE[response-header](./includes/response-header.md)]

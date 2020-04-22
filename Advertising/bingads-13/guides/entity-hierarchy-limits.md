@@ -430,6 +430,8 @@ You can manage negative site placements using the Campaign Management service ([
 
 Each ad group or campaign can contain up to 2,500 negative site placements. Each URL must specify the domain name e.g., *contoso.com* which can include up to three subdomains and two subdirectories. The subdomain count includes the *www* prefix. For example *one.two.three.contoso.com/1/2*, *www.two.three.contoso.com/1/2*, and *one.two.contoso.co.uk/1/2* are valid URLs, whereas *one.two.three.contoso.co.uk/1/2* (too many subdomains) and *one.two.three.contoso.com/1/2/3* (too many subdirectories) are not.
 
+Additionally an ad account can be associated with any number of website exclusion lists ([PlacementExclusionList](../campaign-management-service/placementexclusionlist.md)). Each manager account (customer) can own up to three website exclusion lists. Each list can contain up to 10,000 negative sites ([NegativeSite](../campaign-management-service/negativesite.md)). 
+
 ## <a name="productgroup"></a>Product Groups
 Product groups are used to determine which products from your Microsoft Merchant Center catalog should be included in a particular ad group. In order to understand product groups, first make sure you are familiar with [Product Ads](product-ads.md).
 

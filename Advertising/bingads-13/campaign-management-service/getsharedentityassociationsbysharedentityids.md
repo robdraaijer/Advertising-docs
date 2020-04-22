@@ -4,7 +4,7 @@ ms.service: bing-ads-campaign-management-service
 ms.topic: article
 author: eric-urban
 ms.author: eur
-description: Gets shared entity associations for the specified negative keyword lists.
+description: Gets the negative keyword list or website exclusion list associations by shared entity IDs.
 dev_langs: 
   - csharp
   - java
@@ -12,7 +12,10 @@ dev_langs:
   - python
 ---
 # GetSharedEntityAssociationsBySharedEntityIds Service Operation - Campaign Management
-Gets shared entity associations for the specified negative keyword lists.
+Gets the negative keyword list or website exclusion list associations by shared entity IDs. 
+ 
+> [!IMPORTANT]
+> The operation will only return associations for website exclusion lists that can be viewed by the manager account (customer) set in the CustomerId [request header](#request-header) element. If you have access to multiple manager accounts in an account hierarchy, the operation will return different results depending on the CustomerId scope that you set. You can view all list associations for accounts that you can access. However, only the owner of the list can associate and disassociate it with ad accounts. The owner of the list is determined by the association's [SharedEntityCustomerId](sharedentityassociation.md#sharedentitycustomerid) element.
 
 ## <a name="request"></a>Request Elements
 The *GetSharedEntityAssociationsBySharedEntityIdsRequest* object defines the [body](#request-body) and [header](#request-header) elements of the service operation request. The elements must be in the same order as shown in the [Request SOAP](#request-soap). 
@@ -24,10 +27,10 @@ The *GetSharedEntityAssociationsBySharedEntityIdsRequest* object defines the [bo
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="entitytype"></a>EntityType|The type of entity corresponding to the specified *EntityIds* element.<br/><br/>Currently the only supported value is *Campaign*.|**string**|
-|<a name="sharedentityids"></a>SharedEntityIds|The list of negative keyword list identifiers to return associations with campaigns.<br/><br/>This array can contain a maximum of one element.|**long** array|
-|<a name="sharedentityscope"></a>SharedEntityScope|Reserved.|[EntityScope](entityscope.md)|
-|<a name="sharedentitytype"></a>SharedEntityType|The type of shared entity to get associations from the account's library.<br/><br/>Currently the only supported value is *NegativeKeywordList*.|**string**|
+|<a name="entitytype"></a>EntityType|The type of entity corresponding to the specified [SharedEntityIds](#sharedentityids) element.<br/><br/>Set this element to "Campaign" to get negative keyword list to campaign associations in your ad account shared library.<br/><br/>Set this element to "PlacementExclusionList" to get website exclusion list to ad account associations in your manager account (customer) shared library.|**string**|
+|<a name="sharedentityids"></a>SharedEntityIds|The list of either negative keyword list or website exclusion list identifiers.<br/><br/>This array can contain a maximum of one element.|**long** array|
+|<a name="sharedentityscope"></a>SharedEntityScope|Indicates whether the shared entity is available at the ad account ([Account](entityscope.md#account)) or manager account ([Customer](entityscope.md#customer)) level.<br/><br/>This element is optional and defaults to [Account](entityscope.md#account) scope. The ad account scope is only applicable for negative keyword list to campaign associations.<br/><br/>Set this element to [Customer](entityscope.md#customer) to get website exclusion list to ad account associations in your manager account (customer) shared library.|[EntityScope](entityscope.md)|
+|<a name="sharedentitytype"></a>SharedEntityType|The type of shared entity to get associations.<br/><br/>Set this element to NegativeKeywordList to get negative keyword list to campaign associations in your ad account shared library.<br/><br/>Set this element to PlacementExclusionList to get website exclusion list to ad account associations in your manager account (customer) shared library.|**string**|
 
 ### <a name="request-header"></a>Request Header Elements
 [!INCLUDE[request-header](./includes/request-header.md)]
