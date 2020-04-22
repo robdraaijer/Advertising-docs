@@ -9,7 +9,7 @@ description: Defines the base class of a shared list.
 # SharedList Data Object - Campaign Management
 Defines the base class of a shared list.
 
-Do not try to instantiate a *SharedList*. You can create one or more following objects that derive from it.
+Do not try to instantiate a *SharedList*. You can create one or more of the following objects that derive from it.
 - [NegativeKeywordList](negativekeywordlist.md)  
 - [PlacementExclusionList](placementexclusionlist.md)  
 

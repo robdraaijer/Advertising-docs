@@ -9,8 +9,9 @@ description: Defines the base class of a shared list item.
 # SharedListItem Data Object - Campaign Management
 Defines the base class of a shared list item.
 
-Do not try to instantiate a *SharedListItem*. You can create one or more following objects that derive from it.
-- [NegativeKeyword](negativekeyword.md)
+Do not try to instantiate a *SharedListItem*. You can create one or more of the following objects that derive from it.
+- [NegativeKeyword](negativekeyword.md)  
+- [NegativeSite](negativesite.md)  
 
 ## Syntax
 ```xml

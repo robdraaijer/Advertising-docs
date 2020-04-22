@@ -9,7 +9,7 @@ description: Defines the base class of a shared entity.
 # SharedEntity Data Object - Campaign Management
 Defines the base class of a shared entity.
 
-Do not try to instantiate a *SharedEntity*. You can create one or more following objects that derive from it.
+Do not try to instantiate a *SharedEntity*. You can create one or more of the following objects that derive from it.
 - [NegativeKeywordList](negativekeywordlist.md)  
 - [PlacementExclusionList](placementexclusionlist.md)  
 

@@ -9,7 +9,7 @@ description: Defines a criterion that you want applied to the specified campaign
 # CampaignCriterion Data Object - Campaign Management
 Defines a criterion that you want applied to the specified campaign.
 
-Do not try to instantiate a *CampaignCriterion*. You can create one or more following objects that derive from it.
+Do not try to instantiate a *CampaignCriterion*. You can create one or more of the following objects that derive from it.
 - [BiddableCampaignCriterion](biddablecampaigncriterion.md)
 - [NegativeCampaignCriterion](negativecampaigncriterion.md)
 

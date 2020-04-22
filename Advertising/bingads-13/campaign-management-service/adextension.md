@@ -9,7 +9,7 @@ description: Defines the base object of an ad extension.
 # AdExtension Data Object - Campaign Management
 Defines the base object of an ad extension.
 
-Do not try to instantiate an *AdExtension*. You can create one or more following objects that derive from it.
+Do not try to instantiate an *AdExtension*. You can create one or more of the following objects that derive from it.
 - [ActionAdExtension](actionadextension.md)
 - [AppAdExtension](appadextension.md)
 - [CallAdExtension](calladextension.md)

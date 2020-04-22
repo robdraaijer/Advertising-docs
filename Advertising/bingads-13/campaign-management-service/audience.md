@@ -9,7 +9,7 @@ description: Defines the base object of an audience.
 # Audience Data Object - Campaign Management
 Defines the base object of an audience.
 
-Do not try to instantiate an *Audience*. You can create one or more following objects that derive from it.
+Do not try to instantiate an *Audience*. You can create one or more of the following objects that derive from it.
 - [CustomAudience](customaudience.md)  
 - [InMarketAudience](inmarketaudience.md)  
 - [ProductAudience](productaudience.md)  
