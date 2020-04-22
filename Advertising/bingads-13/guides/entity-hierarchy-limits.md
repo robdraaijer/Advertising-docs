@@ -354,7 +354,7 @@ For more information, see the Microsoft Advertising Help article [Target searche
 ## <a name="experiment"></a>Experiments
 An experiment is where you split a Search campaign’s budget and traffic, and then run an A/B test during a limited date range.
 
-The number of experiments that you can have is only limited by the number of campaigns in your account i.e., you can create up to 10 experiments per base campaign.
+The number of experiments that you can have is only limited by the number of campaigns in your account i.e., you can create up to 10 experiments per base campaign. Since an ad account can contain a maximum of 10,000 campaigns (base campaigns + experiment campaigns), you can have at most 5,000 experiments corresponding to 5,000 base campaigns. 
 
 You can manage experiments using the Bulk service ([Experiment Record](../bulk-service/experiment.md)) or Campaign Management service ([Experiment](../campaign-management-service/experiment.md)).
 

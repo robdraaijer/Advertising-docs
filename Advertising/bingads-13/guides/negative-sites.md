@@ -27,7 +27,7 @@ You can retrieve the negative sites assigned to an individual campaign or ad gro
 Negative sites can be added and deleted from a shared website exclusion list. The website exclusion list can be shared or associated with multiple ad accounts. 
 
 > [!NOTE] 
-> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). 
+> Account level website exclusions are available for customers in the pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 697). You can only view website exclusion lists in the redesigned Microsoft Advertising UI i.e., via Tools -> Shared Library -> Website exclusion lists. If you don't see it, look for the "Try the new Microsoft Advertising" prompt when you sign in. To use the redesigned Microsoft Advertising you must also be in the UI pilot ([GetCustomerPilotFeatures](../customer-management-service/getcustomerpilotfeatures.md) returns 522).  
 
 A manager account can own up to three website exclusion lists. Each list can contain up to 10,000 negative sites. 
 

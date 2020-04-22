@@ -27,8 +27,8 @@ The *GetExperimentsByIdsRequest* object defines the [body](#request-body) and [h
 
 |Element|Description|Data Type|
 |-----------|---------------|-------------|
-|<a name="experimentids"></a>ExperimentIds|The identifiers of the experiments to get.<br/><br/>The maximum size of the list is 1,000 items per service request. If this element is not specified, the operation will return all active experiments in the account (1,000 results per page).|**long** array|
-|<a name="pageinfo"></a>PageInfo|Determines the index and size of experiment results per page.<br/><br/>This request element is optional. If this element is not specified, the defaut page Index is *0* and the default Size is *1,000*.|[Paging](paging.md)|
+|<a name="experimentids"></a>ExperimentIds|The identifiers of the experiments to get.<br/><br/>The maximum size of the list is 5,000 items per service request. If this element is not specified, the operation will return all active experiments in the ad account. An ad account can contain at most 5,000 experiments.|**long** array|
+|<a name="pageinfo"></a>PageInfo|Reserved for future use.|[Paging](paging.md)|
 
 ### <a name="request-header"></a>Request Header Elements
 [!INCLUDE[request-header](./includes/request-header.md)]
